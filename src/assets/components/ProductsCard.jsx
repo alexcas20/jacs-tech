@@ -1,52 +1,53 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import CardActionArea from "@mui/material/CardActionArea";
-import CardActions from "@mui/material/CardActions";
 import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 
-export const ProductsCard = ({product}) => {
+export const ProductsCard = ({ product }) => {
+  const { setCart } = useContext(ProductContext);
 
-    const {setCart} = useContext(ProductContext);
-
-
-    // Add to Cart
-    const addToCart = (product) => {
-    
-        console.log("se agrego al carrito =>" + product.name)
-        setCart((prev) => [...prev, product])
-    
-    }
-
+  // Add to Cart
+  const addToCart = (product) => {
+    console.log("se agrego al carrito =>" + product.name);
+    setCart((prev) => [...prev, product]);
+  };
 
   return (
-    <Card sx={{ maxWidth: 345, backgroundColor: "#ffe"}}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          sx={{aspectRatio: "16/9", objectFit: "cover"}}
-          height="200"
-          image={product.urlImage}
-          alt={product.name}
+    <>
+      <div className=" bg-slate-200 rounded-xl pb-5 w-[300px] cursor-pointer shadow-md shadow-slate-400 transition-all hover:scale-105">
+        <div className="flex items-center justify-center h-56 ">
+        <img
+          className="w-full h-full object-cover"
+          src={product.urlImage}
+          alt=""
         />
-        <CardContent sx={{height:"100px"}}>
-          <Typography gutterBottom variant="h6" component="div">
-            {product.name}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {product.description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" variant="outlined" color="info"
-        onClick={() => addToCart(product)}>
-          Add to Cart
-        </Button>
-      </CardActions>
-    </Card>
+        </div>
+       
+
+        {/* info */}
+
+        <div className="p-3 h-1/2 flex flex-col justify-around ">
+          {/*  description */}
+          <div>
+            <h3 className="font-bold">{product.name}</h3>
+            <p className="text-slate-600 text-sm">{product.description}</p>
+          </div>
+
+          {/*  price/stock */}
+          <div className="flex justify-between items-center ">
+            <span className="text-xs font-semibold uppercase bg-green-400 p-2 rounded-md">
+              stock: {product.stock}
+            </span>
+            <span className="font-semibold tracking-wider">
+              ${product.price}
+            </span>
+          </div>
+
+          {/* Actions */}
+          <div className="pt-4">
+            <button className="bg-orange-300 p-1 rounded-md"
+            onClick={() => addToCart(product)}>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };

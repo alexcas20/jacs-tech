@@ -2,7 +2,7 @@ export const ResponsiveAppBar = () => {
   // Pages
   const pages = ["products", "favs", "cart"];
   return (
-    <header className="bg-teal-500 text-slate-800 p-6 font-bold text-lg uppercase  fixed w-full z-10 rounded-b-md cursor-pointer ">
+    <header className="bg-teal-500 text-slate-800 p-6 font-bold text-lg uppercase w-full z-10 rounded-b-md cursor-pointer ">
       <h1 className="text-2xl tracking-widest text-slate-700 transition-all hover:text-slate-100">
         JacsTech
       </h1>

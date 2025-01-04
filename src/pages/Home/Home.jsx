@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ResponsiveAppBar from "../../assets/components/ResponsiveAppBar";
 import { ProductsCard } from "../../assets/components/ProductsCard";
 import { Grid2 } from "@mui/material";
+import { ResponsiveAppBar } from "../../assets/components/ResponsiveAppBar";
 
 export const Home = () => {
   //Request products
@@ -11,9 +11,8 @@ export const Home = () => {
   const getProducts = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     setProducts(data);
-
   };
 
   useEffect(() => {
@@ -24,18 +23,13 @@ export const Home = () => {
     <>
       <ResponsiveAppBar />
 
-      <Grid2 container spacing={2} sx={{padding: "1rem"}}>
-        {products.map(product => 
-            <ProductsCard product={product} key={product.id}/>
-        )}
-        {products.map(product => 
-            <ProductsCard product={product} key={product.id}/>
-        )}
-        {products.map(product => 
-            <ProductsCard product={product} key={product.id}/>
-        )}
-        
-      </Grid2>
+      <main className="bg-slate-900">
+        <div className="container flex flex-wrap justify-center gap-5 pt-5">
+          {products.map((product) => (
+            <ProductsCard key={product.id} product={product} />
+          ))}
+        </div>
+      </main>
     </>
   );
 };
