@@ -1,11 +1,15 @@
 import { ProviderProduct } from "./assets/context/ProviderProduct";
 import { Home } from "./pages/Home/Home";
+import { AppRouter } from "./routes/AppRouter";
 
 function App() {
   return (
     <>
     <ProviderProduct>
-    <Home />
+      <AppRouter>
+      <Home />
+      </AppRouter>
+   
     </ProviderProduct>
      
     </>
