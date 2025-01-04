@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const ResponsiveAppBar = () => {
   // Pages
   const pages = ["products", "favs", "cart"];
@@ -13,7 +15,7 @@ export const ResponsiveAppBar = () => {
               key={index}
               className="transition-all hover:text-slate-100 hover:underline hover:-translate-y-1"
             >
-              <a href="page">{page}</a>
+              <Link to={`/${page}`}>{page}</Link>
             </li>
           ))}
         </ul>
