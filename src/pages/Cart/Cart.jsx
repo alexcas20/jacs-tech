@@ -8,36 +8,69 @@ export const Cart = () => {
 
   return (
     <>
-      <div className="container flex flex-col items-center">
-        <h2 className="text-2xl">Cart List</h2>
-
-        {/*  Cards products */}
-
-        {cart.map((product, i) => (
-          <div
-            key={i}
-            className="flex justify-between p-4 bg-slate-100 w-[50%]"
-          >
-            <img
-              className="h-32 w-[40%] mix-blend-darken rounded-md object-cover"
-              src={product.urlImage}
-              alt={product.name}
-            />
-            <div className="flex flex-col items-end gap-3">
-              <h3 className="font-bold">{product.name}</h3>
-              <span className="font-semibold text-slate-800">
-                ${product.price}
-              </span>
-              <div className="p-1 flex gap-2 items-center text-sm font-semibold">
-                <button className="bg-blue-500 w-8 p-2 rounded-md transition-all hover:text-slate-200 hover:bg-blue-400">- </button>
-                 cant: 1 <button className="bg-blue-500 w-8 p-2 rounded-md  transition-all hover:text-slate-200 hover:bg-blue-400">+</button>
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* Title page */}
+      <div className="p-2 px-8 md:pt-10">
+        <h2 className="text-4xl font-semibold text-center pb-4">Cart</h2>
+        <hr className="w-[100%]" />
       </div>
-      <div className=" w-[69%] flex justify-end">
-        <span>Total: ${sumaTotal}</span>
+
+      {/*  ItemList */}
+      <div className="p-4 md:flex md:gap-5 md:justify-center">
+        <div className="border rounded-md mb-2 md:w-[600px] ">
+          <h3 className="bg-slate-50 border-b p-3 text-xl font-medium">
+            Item List
+          </h3>
+          {cart.map((product, i) => (
+            <div key={i} className="px-4" >
+              <div className=" flex flex-col items-center">
+                <img
+                  src={product.urlImage}
+                  alt={product.name}
+                  className="w-32 h-32 object-cover"
+                />
+
+                <h4 className="font-semibold">{product.name}</h4>
+
+                <div className="flex flex-col justify-evenly">
+                  <div className="flex items-center gap-10">
+                    <button className="font-semibold text-4xl">-</button>
+                    <span>cant</span>
+                    <button className="font-semibold text-3xl">+</button>
+                  </div>
+                  <span className="text-md font-bold tracking-widest text-center pt-5">
+                    2x$155
+                  </span>
+                </div>
+              </div>
+              <hr className=" my-4 w-[100%]" />
+            </div>
+          ))}
+        </div>
+
+        {/* Order summary */}
+        <div className="border md:w-[280px] h-[220px] rounded-md ">
+          <h3 className="bg-slate-50 border-b p-2 text-lg font-medium">
+            Order Summary
+          </h3>
+
+          <div className="p-6 flex flex-col gap-3 font-semibold text-slate-600">
+            <div className="flex justify-between ">
+              <p>Products(2)</p> <span className="text-black">$452</span>
+            </div>
+
+            <div className="flex justify-between">
+              <p>Shipping</p> <span className="text-black">$42</span>
+            </div>
+
+            <div className="flex justify-between">
+              <p>Total ammount</p> <span className="text-black">$4277</span>
+            </div>
+
+            <button className="p-2 mt-5 bg-black rounded-md text-slate-100 font-medium">
+              Go to checkout
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
