@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {UserIcon, ShoppingCartIcon} from "@heroicons/react/24/outline"
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 
 export const ResponsiveAppBar = () => {
+
+  const {cart} = useContext(ProductContext);
+
+  // total items in cart
+  const items = cart.length;
+ 
+  // navigate to cart
+  const navigate = useNavigate();
+
   // Pages
   const pages = ["products", "favs", "cart"];
   return (
@@ -23,15 +34,16 @@ export const ResponsiveAppBar = () => {
           ))}
         </ul>
         {/*   Button Icons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 text-sm">
           
           <button className="border border-black py-2 px-4 rounded-md transition-colors hover:bg-black hover:text-slate-50 flex items-center  gap-2  ">
             <UserIcon className="w-6"/>
            Login
           </button>
-          <button className="border border-black py-2 px-4 rounded-md transition-colors hover:bg-black hover:text-slate-50 flex items-center gap-2 ">
+          <button className="border border-black py-2 px-4 rounded-md transition-colors hover:bg-black hover:text-slate-50 flex items-center gap-2"
+          onClick={() => navigate("/cart") }>
             <ShoppingCartIcon className="w-6"/>
-            Cart
+            Cart ({items})
           </button>
         </div>
       </nav>
