@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { Cart } from "../pages/Cart/Cart";
-import { ResponsiveAppBar } from "../assets/components/ResponsiveAppBar";
+import { ResponsiveAppBar } from "../components/ResponsiveAppBar";
 
 export const AppRouter = () => {
   return (

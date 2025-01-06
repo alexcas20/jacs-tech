@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ProductsCard } from "../../assets/components/ProductsCard";
+import { ProductsCard } from "../../components/ProductsCard";
 
 export const Home = () => {
   //Request products

@@ -1,4 +1,4 @@
-import { ProviderProduct } from "./assets/context/ProviderProduct";
+import { ProviderProduct } from "./context/ProviderProduct";
 import { Home } from "./pages/Home/Home";
 import { AppRouter } from "./routes/AppRouter";
 
