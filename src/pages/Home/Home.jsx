@@ -23,7 +23,7 @@ export const Home = () => {
     <>
       <ResponsiveAppBar />
 
-      <main className="bg-slate-900">
+      <main>
         <div className="container flex flex-wrap justify-center gap-5 pt-5">
           {products.map((product) => (
             <ProductsCard key={product.id} product={product} />
