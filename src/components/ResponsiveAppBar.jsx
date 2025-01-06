@@ -16,9 +16,9 @@ export const ResponsiveAppBar = () => {
   const pages = ["home", "products", "favs", "cart"];
   return (
     <header className="bg-slate-100 text-slate-800 p-6 font-bold tracking-wider text-md capitalize w-full z-10 cursor-pointer shadow-md sticky top-0 mb-8 ">
-      <h1 className="text-2xl tracking-widest text-slate-700 transition-all">
+    {/*   <h1 className="text-2xl tracking-widest text-slate-700 transition-all">
         JacsTech
-      </h1>
+      </h1> */}
 
       {/*  Links */}
       <nav className="flex justify-center items-center">

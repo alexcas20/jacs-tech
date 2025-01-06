@@ -20,7 +20,7 @@ export const Home = () => {
   return (
     <>
       <main>
-        <div className="container flex flex-wrap justify-center gap-5 pt-5">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-items-center p-4 pt-4 gap-6 md:gap-5 2xl:gap-1 mb-8">
           {products.map((product) => (
             <ProductsCard key={product.id} product={product} />
           ))}

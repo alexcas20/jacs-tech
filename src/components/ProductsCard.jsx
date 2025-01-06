@@ -12,15 +12,14 @@ export const ProductsCard = ({ product }) => {
 
   return (
     <>
-      <div className=" bg-slate-200 rounded-xl pb-5 w-[300px] cursor-pointer shadow-md shadow-slate-400 transition-all hover:scale-105">
+      <div className=" bg-slate-100 rounded-xl pb-5 w-[340px] md:w-[380px] 2xl:w-[430px] h-[420px] 2xl:h-[450px] cursor-pointer shadow-xl shadow-slate-400 transition-all hover:scale-105">
         <div className="flex items-center justify-center h-56 ">
-        <img
-          className="w-full h-full object-cover"
-          src={product.urlImage}
-          alt=""
-        />
+          <img
+            className="w-full h-full object-cover"
+            src={product.urlImage}
+            alt={product.name}
+          />
         </div>
-       
 
         {/* info */}
 
@@ -43,8 +42,12 @@ export const ProductsCard = ({ product }) => {
 
           {/* Actions */}
           <div className="pt-4">
-            <button className="bg-orange-300 p-1 rounded-md"
-            onClick={() => addToCart(product)}>Add to Cart</button>
+            <button
+              className="bg-orange-300 p-1 rounded-md"
+              onClick={() => addToCart(product)}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
