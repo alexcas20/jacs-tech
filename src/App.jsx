@@ -5,13 +5,11 @@ import { AppRouter } from "./routes/AppRouter";
 function App() {
   return (
     <>
-    <ProviderProduct>
-      <AppRouter>
-      <Home />
-      </AppRouter>
-   
-    </ProviderProduct>
-     
+      <ProviderProduct>
+        <AppRouter>
+          <Home />
+        </AppRouter>
+      </ProviderProduct>
     </>
   );
 }

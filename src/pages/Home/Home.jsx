@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ProductsCard } from "../../assets/components/ProductsCard";
-import { Grid2 } from "@mui/material";
-import { ResponsiveAppBar } from "../../assets/components/ResponsiveAppBar";
 
 export const Home = () => {
   //Request products
@@ -21,8 +19,6 @@ export const Home = () => {
 
   return (
     <>
-      <ResponsiveAppBar />
-
       <main>
         <div className="container flex flex-wrap justify-center gap-5 pt-5">
           {products.map((product) => (
