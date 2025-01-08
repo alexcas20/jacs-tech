@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import { useSelector } from "react-redux";
+
+
 
 export const Cart = () => {
-  const { cart } = useContext(ProductContext);
 
-  const sumaTotal = cart.reduce((acc, product) => acc + product.price, 0);
+    const items = useSelector((state) => state.cart.items);
+    const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+
+/* 
+  const sumaTotal = cart.reduce((acc, product) => acc + product.price, 0); */
 
   return (
     <>
@@ -20,7 +25,7 @@ export const Cart = () => {
           <h3 className="bg-slate-50 border-b p-3 text-xl font-medium">
             Item List
           </h3>
-          {cart.map((product, i) => (
+          {items.map((product, i) => (
             <div key={i} className="px-4" >
               <div className=" flex flex-col items-center">
                 <img
@@ -34,11 +39,11 @@ export const Cart = () => {
                 <div className="flex flex-col justify-evenly">
                   <div className="flex items-center gap-10">
                     <button className="font-semibold text-4xl">-</button>
-                    <span>cant</span>
+                    <span>{product.quantity}</span>
                     <button className="font-semibold text-3xl">+</button>
                   </div>
                   <span className="text-md font-bold tracking-widest text-center pt-5">
-                    2x$155
+                    {product.quantity} x {product.price}
                   </span>
                 </div>
               </div>

@@ -1,13 +1,14 @@
-import { useContext } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cartSlice";
 
 export const ProductsCard = ({ product }) => {
-  const { setCart } = useContext(ProductContext);
+  // redux
+  const dispatch = useDispatch();
 
   // Add to Cart
   const addToCart = (product) => {
     console.log("se agrego al carrito =>" + product.name);
-    setCart((prev) => [...prev, product]);
+    dispatch(addItem(product));
   };
 
   return (
