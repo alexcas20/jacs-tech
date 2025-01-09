@@ -1,14 +1,24 @@
-import { useSelector } from "react-redux";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { addCant, restCant } from "../../features/cartSlice";
 
 export const Cart = () => {
+  const items = useSelector((state) => state.cart.items);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-    const items = useSelector((state) => state.cart.items);
-    const totalAmount = useSelector((state) => state.cart.totalAmount);
+  // dispatch
+  const dispatch = useDispatch();
 
+  // rest cant
+  const onRestCant = (product) => {
+    dispatch(restCant(product));
+  };
 
-/* 
+  // add cant
+  const onAddCant = (product) => {
+    dispatch(addCant(product));
+  };
+
+  /* 
   const sumaTotal = cart.reduce((acc, product) => acc + product.price, 0); */
 
   return (
@@ -26,7 +36,7 @@ export const Cart = () => {
             Item List
           </h3>
           {items.map((product, i) => (
-            <div key={i} className="px-4" >
+            <div key={i} className="px-4">
               <div className=" flex flex-col items-center">
                 <img
                   src={product.urlImage}
@@ -38,9 +48,19 @@ export const Cart = () => {
 
                 <div className="flex flex-col justify-evenly">
                   <div className="flex items-center gap-10">
-                    <button className="font-semibold text-4xl">-</button>
+                    <button
+                      className="font-semibold text-4xl"
+                      onClick={() => onRestCant(product)}
+                    >
+                      -
+                    </button>
                     <span>{product.quantity}</span>
-                    <button className="font-semibold text-3xl">+</button>
+                    <button
+                      className="font-semibold text-3xl"
+                      onClick={() => onAddCant(product)}
+                    >
+                      +
+                    </button>
                   </div>
                   <span className="text-md font-bold tracking-widest text-center pt-5">
                     {product.quantity} x {product.price}
