@@ -8,7 +8,7 @@ export const ResponsiveAppBar = () => {
   // Pages
   const pages = ["home", "products", "favs", "cart"];
   return (
-    <header className="bg-slate-100 text-slate-800 p-6 font-bold tracking-wider text-md capitalize w-full z-10 cursor-pointer shadow-md sticky top-0 mb-8 ">
+    <header className="bg-slate-100 text-slate-800 p-6 font-bold tracking-wider text-md capitalize w-full z-10 cursor-pointer shadow-md sticky top-0  ">
       {/*  Links */}
       <nav className="flex justify-center items-center">
         <ul className="list-none flex flex-row flex-1 justify-center gap-6 text-slate-500 text-lg">
