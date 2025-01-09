@@ -34,6 +34,7 @@ const cartSlice = createSlice({
             (item) => item.id !== action.payload.id
           );
         }
+        state.totalAmount -= action.payload.price;
       }
     },
     addCant: (state, action) => {
@@ -43,11 +44,10 @@ const cartSlice = createSlice({
       if (selectedItem) {
         if (selectedItem.quantity < selectedItem.stock) {
           selectedItem.quantity += 1;
+          state.totalAmount += action.payload.price;
         } else {
           alert("maximo stock");
         }
-      } else {
-        console.log("verifique acciones");
       }
     },
   },

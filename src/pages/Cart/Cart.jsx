@@ -18,9 +18,6 @@ export const Cart = () => {
     dispatch(addCant(product));
   };
 
-  /* 
-  const sumaTotal = cart.reduce((acc, product) => acc + product.price, 0); */
-
   return (
     <>
       {/* Title page */}
@@ -80,7 +77,10 @@ export const Cart = () => {
 
           <div className="p-6 flex flex-col gap-3 font-semibold text-slate-600">
             <div className="flex justify-between ">
-              <p>Products(2)</p> <span className="text-black">$452</span>
+              <p>Products({items.length})</p>{" "}
+              <span className="text-black">
+                ${parseFloat(totalAmount.toFixed(2))}
+              </span>
             </div>
 
             <div className="flex justify-between">
@@ -88,7 +88,10 @@ export const Cart = () => {
             </div>
 
             <div className="flex justify-between">
-              <p>Total ammount</p> <span className="text-black">$4277</span>
+              <p>Total ammount</p>{" "}
+              <span className="text-black">
+                ${parseFloat(totalAmount.toFixed(2)) + 42}
+              </span>
             </div>
 
             <button className="p-2 mt-5 bg-black rounded-md text-slate-100 font-medium">
