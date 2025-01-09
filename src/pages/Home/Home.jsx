@@ -1,31 +1,79 @@
-import React, { useEffect, useState } from "react";
-import { ProductsCard } from "../../components/ProductsCard";
+import homeImg from "../../assets/images/home.png";
 
 export const Home = () => {
-  //Request products
-  const [products, setProducts] = useState([]);
-  const URL = "http://localhost:8080/api/v1/products";
-
-  const getProducts = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    console.log(data);
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   return (
-    <>
-      <main>
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-items-center p-4 pt-12 gap-6 md:gap-5 2xl:gap-1 mb-8">
-          {products.map((product) => (
-            <ProductsCard key={product.id} product={product} />
-          ))}
+    <div className="bg-slate-200 h-full">
+      <div className="relative group cursor-pointer ">
+        <img
+          src={homeImg}
+          alt="Setup Gaming"
+          className="object-cover opacity-95"
+        />
+        <div className="absolute bottom-0  bg-slate-950 w-full h-1/4 p-4 md:p-8 transition-all group-hover:h-[55%] group-hover:py-1 md:group-hover:h-1/3 md:group-hover:p-8">
+          <h3 className="tracking-wide capitalize text-slate-50 text-sm md:text-4xl text-center font-thin transition-all group-hover:opacity-0 md:group-hover:opacity-100 md:group-hover:text-3xl group-hover:text-start ">
+            The coolest tech store in the world is arrive
+          </h3>
+          <p className="text-slate-400 text-md md:text-lg font-thin opacity-0 transition-opacity group-hover:opacity-100">
+            In JacsTech, you're our top priority, so we offer you the best
+            gaming electronics at low prices. Hurry and grab these unbeatable
+            offers!.{" "}
+          </p>
         </div>
-      </main>
-    </>
+      </div>
+
+      {/*   Latest Products */}
+      <div className="bg-slate-50 p-10">
+        <h3 className="text-center text-4xl">Latest Products</h3>
+        <hr className="my-5 border-slate-400" />
+      </div>
+
+
+      {/* Evaluations */}
+      <div className="p-8">
+        <h3 className="text-center text-4xl">Your Opinions</h3>
+        <hr className="my-5 border-slate-400" />
+
+        <div className="grid gap-3 md:grid md:grid-cols-2">
+          <div className="bg-slate-50 rounded-md">
+            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
+            <hr className="border-slate-400 pb-2" />
+            <p className="px-2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
+              laudantium. Rerum vitae molestiae perspiciatis tempora unde
+              corporis enim officia. Saepe quibusdam delectus eius dignissimos
+              iste, voluptatem eum ab pariatur! Quasi.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-md">
+            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
+            <hr className="border-slate-400 pb-2" />
+            <p className="px-2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
+              laudantium. Rerum vitae molestiae perspiciatis tempora unde
+              corporis enim officia. Saepe quibusdam delectus eius dignissimos
+              iste, voluptatem eum ab pariatur! Quasi.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-md">
+            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
+            <hr className="border-slate-400 pb-2" />
+            <p className="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, laudantium. Rerum vitae molestiae perspiciatis tempora unde corporis enim officia. Saepe quibusdam delectus eius dignissimos iste, voluptatem eum ab pariatur! Quasi.</p>
+          </div>
+
+          <div className="bg-slate-50 rounded-md">
+            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
+            <hr className="border-slate-400 pb-2" />
+            <p className="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, laudantium. Rerum vitae molestiae perspiciatis tempora unde corporis enim officia. Saepe quibusdam delectus eius dignissimos iste, voluptatem eum ab pariatur! Quasi.</p>
+          </div>
+
+        </div>
+      </div>
+
+  
+
+      
+    </div>
   );
 };
