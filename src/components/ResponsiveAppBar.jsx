@@ -1,12 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { UserIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 
 export const ResponsiveAppBar = () => {
   // navigate to cart
   const navigate = useNavigate();
 
+  // total items cart
+  const items = useSelector((state) => state.cart.items);
+
   // Pages
-  const pages = ["home", "products", "favs", "cart"];
+  const pages = ["home", "products", "favs"];
   return (
     <header className="bg-slate-100 text-slate-800 p-6 font-bold tracking-wider text-md capitalize w-full z-10 cursor-pointer shadow-md sticky top-0  ">
       {/*  Links */}
@@ -32,7 +36,7 @@ export const ResponsiveAppBar = () => {
             onClick={() => navigate("/cart")}
           >
             <ShoppingCartIcon className="w-6" />
-            Cart
+            Cart ({items.length})
           </button>
         </div>
       </nav>
