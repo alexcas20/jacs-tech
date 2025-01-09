@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addCant, restCant } from "../../features/cartSlice";
+import { addCant, deleteItem, restCant } from "../../features/cartSlice";
 import { CartEmpty } from "../../components/CartEmpty";
+
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 export const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -19,12 +21,17 @@ export const Cart = () => {
     dispatch(addCant(product));
   };
 
+  // delete Item
+  const onDeleteItem = (id) => {
+    dispatch(deleteItem(id));
+  }
+
   return (
     <>
       {items.length > 0 ? (
         <>
           {/* Title page */}
-          <div className="p-2 px-8 md:pt-10">
+          <div className="p-2 px-8 pt-6 md:pt-10">
             <h2 className="text-4xl font-semibold text-center pb-4">Cart</h2>
             <hr className="w-[100%]" />
           </div>
@@ -36,7 +43,10 @@ export const Cart = () => {
                 Item List
               </h3>
               {items.map((product, i) => (
-                <div key={i} className="px-4">
+                <div key={i} className="px-4 relative">
+                
+                    <XMarkIcon className="w-5 absolute right-5 top-3 cursor-pointer" onClick={() => onDeleteItem(product.id)}/>
+               
                   <div className=" flex flex-col items-center">
                     <img
                       src={product.urlImage}
