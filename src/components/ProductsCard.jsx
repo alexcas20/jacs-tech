@@ -1,9 +1,13 @@
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export const ProductsCard = ({ product }) => {
   // redux
   const dispatch = useDispatch();
+
+  // navigate to product info
+  const navigate = useNavigate();
 
   // Add to Cart
   const addToCart = (product) => {
@@ -42,9 +46,15 @@ export const ProductsCard = ({ product }) => {
           </div>
 
           {/* Actions */}
-          <div className="pt-4">
+          <div className="pt-4 flex justify-stretch gap-4">
             <button
-              className="border border-black py-1 px-2 text-sm rounded-md transition-all font-medium hover:translate-x-2 hover:bg-black hover:text-slate-50"
+              className="bg-slate-950 text-slate-50 py-2 px-2 text-sm rounded-md transition-all font-medium hover:-translate-y-1 hover:bg-slate-700"
+              onClick={() => navigate(`/product/${product.id}`)}
+            >
+              Buy Now
+            </button>
+            <button
+              className="bg-slate-950 text-slate-50 py-2 px-2 text-sm rounded-md transition-all font-medium hover:-translate-y-1 hover:bg-slate-700"
               onClick={() => addToCart(product)}
             >
               Add to Cart
