@@ -1,6 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 export const ResponsiveAppBar = () => {
   // navigate to cart
@@ -11,38 +13,85 @@ export const ResponsiveAppBar = () => {
 
   // Pages
   const pages = ["home", "products", "favs"];
+
+  // mobile appbar
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="bg-slate-100 text-slate-800 p-6 font-bold tracking-wider text-md capitalize w-full z-10 cursor-pointer shadow-md sticky top-0  ">
-      {/*  Links */}
-      <nav className="flex justify-center items-center">
-        <ul className="list-none flex flex-row flex-1 justify-center gap-6 text-slate-600 text-lg">
-          {pages.map((page, index) => (
-            <li
-              key={index}
-              className="transition-all hover:scale-110"
-            >
-              <NavLink
-                to={`/${page}`}
-                className={({ isActive }) =>
-                  isActive ? "text-slate-950" : "text-[15px]"
-                }
+    <header className="bg-slate-900 text-slate-50 sticky top-0 z-10">
+      <nav className="px-4 py-10 md:flex md:justify-around">
+        <div className="flex justify-between items-center">
+          <h3 className="font-extrabold text-2xl">Jacs Tech</h3>
+          <button
+            className="md:hidden border border-slate-50 p-2 rounded-md"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? (
+              <XMarkIcon className="w-8" />
+            ) : (
+              <Bars3Icon className="w-8" />
+            )}
+          </button>
+        </div>
+
+        {/* Desktop Bar */}
+        <div className="hidden md:flex md:items-center">
+          <ul className="cursor-pointer flex gap-8">
+            {pages.map((page, i) => (
+              <li
+                className="text-slate-400 text-lg capitalize transition-all hover:text-slate-200 hover:scale-110 "
+                key={i}
               >
-                {page}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-        {/*   Button Icons */}
-        <div className="flex gap-3 text-sm">
-          <button className="border border-black py-2 px-4 rounded-md transition-colors hover:bg-black hover:text-slate-50 flex items-center  gap-2  ">
-            <UserIcon className="w-6" />
+                <NavLink
+                  to={`/${page}`}
+                  className={({ isActive }) =>
+                    isActive ? "text-slate-50" : "text-[15px]"
+                  }
+                >
+                  {page}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Mobile nav */}
+        {isOpen && (
+          <ul className="cursor-pointer pb-6 flex flex-col items-center gap-2 md:hidden">
+            {pages.map((page, i) => (
+              <li
+                className="text-slate-400 capitalize transition-all hover:text-slate-200 hover:scale-110 "
+                key={i}
+              >
+                <NavLink
+                  to={`/${page}`}
+                  className={({ isActive }) =>
+                    isActive ? "text-slate-50" : "text-[15px]"
+                  }
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {page}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Action buttons */}
+        <div
+          className={`${
+            isOpen
+              ? "flex justify-center gap-4 "
+              : "hidden md:flex md:gap-4 md:justify-center md:items-center"
+          }`}
+        >
+          <button className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex gap-2 items-center">
+            <UserIcon className="w-4" />
             Login
           </button>
-          <button
-            className="border border-black py-2 px-4 rounded-md transition-colors hover:bg-black hover:text-slate-50 flex items-center gap-2"
-            onClick={() => navigate("/cart")}
-          >
-            <ShoppingCartIcon className="w-6" />
+          <button className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex items-center gap-2"
+          onClick={() => navigate("/cart")}>
+            <ShoppingCartIcon className="w-4" />
             Cart ({items.length})
           </button>
         </div>
