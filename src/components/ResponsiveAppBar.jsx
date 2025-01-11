@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { UserIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
 
@@ -15,13 +15,20 @@ export const ResponsiveAppBar = () => {
     <header className="bg-slate-100 text-slate-800 p-6 font-bold tracking-wider text-md capitalize w-full z-10 cursor-pointer shadow-md sticky top-0  ">
       {/*  Links */}
       <nav className="flex justify-center items-center">
-        <ul className="list-none flex flex-row flex-1 justify-center gap-6 text-slate-500 text-lg">
+        <ul className="list-none flex flex-row flex-1 justify-center gap-6 text-slate-600 text-lg">
           {pages.map((page, index) => (
             <li
               key={index}
-              className="transition-all hover:text-black hover:scale-110"
+              className="transition-all hover:scale-110"
             >
-              <Link to={`/${page}`}>{page}</Link>
+              <NavLink
+                to={`/${page}`}
+                className={({ isActive }) =>
+                  isActive ? "text-slate-950" : "text-[15px]"
+                }
+              >
+                {page}
+              </NavLink>
             </li>
           ))}
         </ul>
