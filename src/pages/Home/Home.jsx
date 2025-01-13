@@ -1,6 +1,13 @@
+import { useSelector } from "react-redux";
 import homeImg from "../../assets/images/home.png";
+import { SwiperComp } from "../../components/SwiperComp";
 
 export const Home = () => {
+
+  // get Products
+  const items = useSelector((state) => state.cart.items);
+
+  console.log(items)
   return (
     <div className="bg-slate-200 h-full">
       <div className="relative group cursor-pointer ">
@@ -22,9 +29,10 @@ export const Home = () => {
       </div>
 
       {/*   Latest Products */}
-      <div className="bg-slate-50 p-10">
+      <div className="bg-white p-10">
         <h3 className="text-center text-4xl">Latest Products</h3>
         <hr className="my-5 border-slate-400" />
+        <SwiperComp items={items}/>
       </div>
 
 
