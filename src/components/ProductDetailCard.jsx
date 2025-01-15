@@ -26,7 +26,7 @@ export const ProductDetailCard = ({ product }) => {
 
       {/* product info */}
       <div>
-        <h5 className="uppercase text-xl text-slate-500">Keyboards</h5>
+        <h5 className="uppercase text-xl text-slate-500">{product.category}</h5>
         <h3 className="text-5xl text-slate-800">{product.name}</h3>
         <span>Review</span>
         <p className="tracking-wider text-3xl py-6 text-slate-700">
