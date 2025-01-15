@@ -1,19 +1,8 @@
-import { useDispatch } from "react-redux";
-import { addItem } from "../features/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 export const ProductsCard = ({ product }) => {
-  // redux
-  const dispatch = useDispatch();
-
   // navigate to product info
   const navigate = useNavigate();
-
-  // Add to Cart
-  const addToCart = (product) => {
-    console.log("se agrego al carrito =>" + product.name);
-    dispatch(addItem(product));
-  };
 
   return (
     <>
@@ -36,28 +25,19 @@ export const ProductsCard = ({ product }) => {
           </div>
 
           {/*  price/stock */}
-          <div className="flex justify-between items-center ">
-            <span className="text-xs font-semibold uppercase border-b border-black p-2 ">
-              stock: {product.stock}
-            </span>
-            <span className="font-semibold tracking-wider">
+          <div className="flex justify-end items-center">
+            <span className="font-semibold tracking-wider border-b border-black p-1">
               ${product.price}
             </span>
           </div>
 
           {/* Actions */}
-          <div className="pt-4 flex justify-stretch gap-4">
+          <div className="pt-4 w-[300px] mx-auto">
             <button
-              className="bg-slate-950 text-slate-50 py-2 px-2 text-sm rounded-md transition-all font-medium hover:-translate-y-1 hover:bg-slate-700"
+              className="bg-slate-950 w-full text-slate-50 py-2 px-2 text-sm rounded-md transition-all font-medium hover:-translate-y-1 hover:bg-slate-700"
               onClick={() => navigate(`/product/${product.id}`)}
             >
               Buy Now
-            </button>
-            <button
-              className="bg-slate-950 text-slate-50 py-2 px-2 text-sm rounded-md transition-all font-medium hover:-translate-y-1 hover:bg-slate-700"
-              onClick={() => addToCart(product)}
-            >
-              Add to Cart
             </button>
           </div>
         </div>
