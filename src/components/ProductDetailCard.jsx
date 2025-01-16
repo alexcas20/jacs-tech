@@ -1,18 +1,18 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../features/cartSlice";
+import { QuantitySelector } from "./QuantitySelector";
 
 export const ProductDetailCard = ({ product }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  // add to cart 
+  // add to cart
   const onAddToCart = (product) => {
-   
     dispatch(addItem(product));
-    alert("Added Item to cart")
-  }
+    alert("Added Item to cart");
+  };
 
   return (
     <div className="flex flex-col items-center md:flex-row gap-8">
@@ -33,15 +33,30 @@ export const ProductDetailCard = ({ product }) => {
           ${product.price}
         </p>
         <p className="text-slate-600 text-lg">{product.description}</p>
+
+        {/*  Quantity selector */}
+        <QuantitySelector product={product} onAddToCart={onAddToCart} />
+
         <div className="flex gap-6 mt-3">
-          <button className=" border border-black py-1 px-2 rounded-md transition-all hover:bg-slate-950 hover:text-slate-50"
-          onClick={()=> onAddToCart(product)}>
-            Add to cart
-          </button>
-          <button className="bg-slate-950 py-1 px-3 rounded-md text-slate-50 transition-colors hover:bg-slate-700"
-          onClick={() => navigate("/cart")}>
-            Go to cart
-          </button>
+          {product.quantity !== undefined ? (
+            <button
+              className=" border border-black py-1 px-2 rounded-md transition-all hover:bg-slate-950 hover:text-slate-50"
+              onClick={() => onAddToCart(product)}
+            >
+              Add to cart
+            </button>
+          ) : (
+            ""
+          )}
+
+          <div className="w-full flex justify-center">
+            <button
+              className="bg-slate-950 py-2 px-3 rounded-md w-full text-slate-50 transition-colors hover:bg-slate-700"
+              onClick={() => navigate("/cart")}
+            >
+              Go to cart
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addCant, deleteItem, restCant } from "../../features/cartSlice";
+import { deleteItem } from "../../features/cartSlice";
 import { CartEmpty } from "../../components/CartEmpty";
 
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { QuantitySelector } from "../../components/QuantitySelector";
 
 export const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -11,20 +12,10 @@ export const Cart = () => {
   // dispatch
   const dispatch = useDispatch();
 
-  // rest cant
-  const onRestCant = (product) => {
-    dispatch(restCant(product));
-  };
-
-  // add cant
-  const onAddCant = (product) => {
-    dispatch(addCant(product));
-  };
-
   // delete Item
   const onDeleteItem = (id) => {
     dispatch(deleteItem(id));
-  }
+  };
 
   return (
     <>
@@ -44,9 +35,11 @@ export const Cart = () => {
               </h3>
               {items.map((product, i) => (
                 <div key={i} className="px-4 relative">
-                
-                    <XMarkIcon className="w-5 absolute right-5 top-3 cursor-pointer" onClick={() => onDeleteItem(product.id)}/>
-               
+                  <XMarkIcon
+                    className="w-5 absolute right-5 top-3 cursor-pointer"
+                    onClick={() => onDeleteItem(product.id)}
+                  />
+
                   <div className=" flex flex-col items-center">
                     <img
                       src={product.urlImage}
@@ -56,7 +49,7 @@ export const Cart = () => {
 
                     <h4 className="font-semibold">{product.name}</h4>
 
-                    <div className="flex flex-col justify-evenly">
+                    {/* <div className="flex flex-col justify-evenly">
                       <div className="flex items-center gap-10">
                         <button
                           className="font-semibold text-4xl"
@@ -72,11 +65,14 @@ export const Cart = () => {
                           +
                         </button>
                       </div>
-                      <span className="text-md font-bold tracking-widest text-center pt-5">
-                        {product.quantity} x {product.price}
-                      </span>
-                    </div>
+                      
+                    </div> */}
+                    <QuantitySelector product={product} />
+                    <span className="text-md font-bold tracking-widest text-center pt-5">
+                      {product.quantity} x {product.price}
+                    </span>
                   </div>
+
                   <hr className=" my-4 w-[100%]" />
                 </div>
               ))}
