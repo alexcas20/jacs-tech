@@ -9,7 +9,7 @@ export const ProductDetailCard = ({ product }) => {
   const dispatch = useDispatch();
 
   // add to cart
-  const onAddToCart = (product) => {
+  const handleAddToCart = (product) => {
     dispatch(addItem(product));
     alert("Added Item to cart");
   };
@@ -35,7 +35,7 @@ export const ProductDetailCard = ({ product }) => {
         <p className="text-slate-600 text-lg">{product.description}</p>
 
         {/*  Quantity selector */}
-        <QuantitySelector product={product} onAddToCart={onAddToCart} />
+        <QuantitySelector product={product} onAddToCart={handleAddToCart} />
 
         <div className="flex gap-6 mt-3">
           {product.quantity !== undefined ? (
