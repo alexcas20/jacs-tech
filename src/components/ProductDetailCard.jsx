@@ -2,11 +2,14 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../features/cartSlice";
 import { QuantitySelector } from "./QuantitySelector";
+import { Rating } from "./Rating";
 
 export const ProductDetailCard = ({ product }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  const productRate = 4;
 
   // add to cart
   const handleAddToCart = (product) => {
@@ -28,7 +31,10 @@ export const ProductDetailCard = ({ product }) => {
       <div>
         <h5 className="uppercase text-xl text-slate-500">{product.category}</h5>
         <h3 className="text-5xl text-slate-800">{product.name}</h3>
-        <span>Review</span>
+
+        {/*    Rating stars */}
+        <Rating rate={productRate} />
+
         <p className="tracking-wider text-3xl py-6 text-slate-700">
           ${product.price}
         </p>
