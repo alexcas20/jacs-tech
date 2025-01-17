@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductsCard } from "../../components/ProductsCard";
+import {ProductsCard} from "../../components/Product/ProductsCard"
 
 export const Products = () => {
   //Request products

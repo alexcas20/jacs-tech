@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addItem } from "../features/cartSlice";
-import { QuantitySelector } from "./QuantitySelector";
-import { Rating } from "./Rating";
+import { addItem } from "../../features/cartSlice";
+import { QuantitySelector } from "../QuantitySelector";
+import { Rating } from "../Rating";
 
 export const ProductDetailCard = ({ product }) => {
   const navigate = useNavigate();

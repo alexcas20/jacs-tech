@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ProductDetailCard } from "../../components/ProductDetailCard";
+import { ProductDetailCard } from "../../components/Product/ProductDetailCard";
+
 
 export const ProductDetail = () => {
   // get item by id
