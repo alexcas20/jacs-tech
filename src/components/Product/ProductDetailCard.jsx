@@ -20,7 +20,7 @@ export const ProductDetailCard = ({ product }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center md:flex-row gap-8">
+      <article className="flex flex-col items-center md:flex-row gap-8">
         <div className="w-[320px] h-[350px] md:h-[600px] md:w-[700px]">
           <img
             src={product.urlImage}
@@ -69,12 +69,12 @@ export const ProductDetailCard = ({ product }) => {
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
       {/* Relationaded products */}
-      <div className="w-full p-8 flex justify-center">
+      <article className="w-full p-8 flex flex-row justify-center">
         <ProductsCarrousel category={product.category} id={product.id} />
-      </div>
+      </article>
     </>
   );
 };
