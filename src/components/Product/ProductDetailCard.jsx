@@ -72,8 +72,8 @@ export const ProductDetailCard = ({ product }) => {
       </div>
 
       {/* Relationaded products */}
-      <div className="">
-        <ProductsCarrousel category={product.category} />
+      <div className="w-full p-8 flex justify-center">
+        <ProductsCarrousel category={product.category} id={product.id} />
       </div>
     </>
   );

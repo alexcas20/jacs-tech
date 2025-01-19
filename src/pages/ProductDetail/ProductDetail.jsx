@@ -20,7 +20,7 @@ export const ProductDetail = () => {
 
   useEffect(() => {
     getProduct(id);
-  }, []);
+  }, [id]);
 
   return (
     <article className="container mx-auto py-20 px-10">
