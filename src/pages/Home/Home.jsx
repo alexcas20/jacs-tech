@@ -1,13 +1,8 @@
-import { useSelector } from "react-redux";
 import homeImg from "../../assets/images/home.png";
-import { SwiperComp } from "../../components/SwiperComp";
 import { Review } from "../../components/Reviews/Review";
+import { ProductsCarrousel } from "../../components/Product/ProductsCarrousel";
 
 export const Home = () => {
-  // get Products
-  const items = useSelector((state) => state.cart.items);
-
-  console.log(items);
   return (
     <div className="bg-slate-200 h-full">
       <div className="relative group cursor-pointer ">
@@ -29,10 +24,12 @@ export const Home = () => {
       </div>
 
       {/*   Latest Products */}
-      <div className="bg-white p-10">
-        <h3 className="text-center text-4xl">Latest Products</h3>
-        <hr className="my-5 border-slate-400" />
-        <SwiperComp items={items} />
+      <div className="bg-white p-10 flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col items-center">
+          <h3 className="text-center text-4xl">Latest Products</h3>
+          <hr className="border-black w-[50%] my-4" />
+        </div>
+        <ProductsCarrousel latest={true} />
       </div>
 
       {/* Reviews */}
