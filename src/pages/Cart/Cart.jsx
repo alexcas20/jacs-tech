@@ -22,7 +22,7 @@ export const Cart = () => {
       {items.length > 0 ? (
         <>
           {/* Title page */}
-          <div className="p-2 px-8 pt-6 md:pt-10">
+          <div className="py-2 px-8 pt-6 md:pt-10">
             <h2 className="text-4xl font-semibold text-center pb-4">Cart</h2>
             <hr className="w-[100%]" />
           </div>
@@ -49,24 +49,6 @@ export const Cart = () => {
 
                     <h4 className="font-semibold">{product.name}</h4>
 
-                    {/* <div className="flex flex-col justify-evenly">
-                      <div className="flex items-center gap-10">
-                        <button
-                          className="font-semibold text-4xl"
-                          onClick={() => onRestCant(product)}
-                        >
-                          -
-                        </button>
-                        <span>{product.quantity}</span>
-                        <button
-                          className="font-semibold text-3xl"
-                          onClick={() => onAddCant(product)}
-                        >
-                          +
-                        </button>
-                      </div>
-                      
-                    </div> */}
                     <QuantitySelector product={product} />
                     <span className="text-md font-bold tracking-widest text-center pt-5">
                       {product.quantity} x {product.price}
@@ -80,7 +62,7 @@ export const Cart = () => {
 
             {/* Order summary */}
             <div className="border md:w-[280px] h-[220px] rounded-md ">
-              <h3 className="bg-slate-50 border-b p-2 text-lg font-medium">
+              <h3 className="bg-slate-50 border-b p-3 text-lg font-medium ">
                 Order Summary
               </h3>
 

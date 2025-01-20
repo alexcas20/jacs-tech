@@ -52,7 +52,7 @@ export const ProductsCarrousel = ({ category, id }) => {
       <hr className="border-b-slate-900 border-b-2  w-[200px] mx-auto mb-8" />
 
       {/*   Swiper */}
-      <div className="flex gap-4 bg-slate-50 rounded-2xl w-[300px] md:w-[780px] lg:w-full">
+      <div className="flex gap-4 bg-slate-50 rounded-2xl w-[350px] md:w-[780px] lg:w-full">
         <Swiper
           modules={[Navigation, Autoplay]}
           autoplay={{ delay: 2000 }}
