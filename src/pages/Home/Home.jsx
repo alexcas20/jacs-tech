@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import homeImg from "../../assets/images/home.png";
 import { SwiperComp } from "../../components/SwiperComp";
+import { Review } from "../../components/Reviews/Review";
 
 export const Home = () => {
-
   // get Products
   const items = useSelector((state) => state.cart.items);
 
-  console.log(items)
+  console.log(items);
   return (
     <div className="bg-slate-200 h-full">
       <div className="relative group cursor-pointer ">
@@ -32,56 +32,11 @@ export const Home = () => {
       <div className="bg-white p-10">
         <h3 className="text-center text-4xl">Latest Products</h3>
         <hr className="my-5 border-slate-400" />
-        <SwiperComp items={items}/>
+        <SwiperComp items={items} />
       </div>
 
-
-      {/* Evaluations */}
-      <div className="p-8">
-        <h3 className="text-center text-4xl">Your Opinions</h3>
-        <hr className="my-5 border-slate-400" />
-
-        <div className="grid gap-3 md:grid md:grid-cols-2">
-          <div className="bg-slate-50 rounded-md">
-            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
-            <hr className="border-slate-400 pb-2" />
-            <p className="px-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-              laudantium. Rerum vitae molestiae perspiciatis tempora unde
-              corporis enim officia. Saepe quibusdam delectus eius dignissimos
-              iste, voluptatem eum ab pariatur! Quasi.
-            </p>
-          </div>
-
-          <div className="bg-slate-50 rounded-md">
-            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
-            <hr className="border-slate-400 pb-2" />
-            <p className="px-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-              laudantium. Rerum vitae molestiae perspiciatis tempora unde
-              corporis enim officia. Saepe quibusdam delectus eius dignissimos
-              iste, voluptatem eum ab pariatur! Quasi.
-            </p>
-          </div>
-
-          <div className="bg-slate-50 rounded-md">
-            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
-            <hr className="border-slate-400 pb-2" />
-            <p className="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, laudantium. Rerum vitae molestiae perspiciatis tempora unde corporis enim officia. Saepe quibusdam delectus eius dignissimos iste, voluptatem eum ab pariatur! Quasi.</p>
-          </div>
-
-          <div className="bg-slate-50 rounded-md">
-            <h4 className="bg-slate-100 p-2 rounded-md">Javier</h4>
-            <hr className="border-slate-400 pb-2" />
-            <p className="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, laudantium. Rerum vitae molestiae perspiciatis tempora unde corporis enim officia. Saepe quibusdam delectus eius dignissimos iste, voluptatem eum ab pariatur! Quasi.</p>
-          </div>
-
-        </div>
-      </div>
-
-  
-
-      
+      {/* Reviews */}
+      <Review />
     </div>
   );
 };
