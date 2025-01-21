@@ -24,13 +24,8 @@ export const Home = () => {
       </div>
 
       {/*   Latest Products */}
-      <div className="bg-white p-10 flex flex-col justify-center items-center md:flex-row">
-        <div className="flex flex-col items-center">
-          <h3 className="text-center text-4xl">Latest Products</h3>
-          <hr className="border-black w-[50%] my-4" />
-        </div>
-        <ProductsCarrousel latest={true} />
-      </div>
+
+      <ProductsCarrousel latest={true} />
 
       {/* Reviews */}
       <Review />

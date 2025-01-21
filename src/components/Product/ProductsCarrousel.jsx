@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+
 
 // Is Mobile
 const useIsMobile = () => {
@@ -19,6 +24,22 @@ const useIsMobile = () => {
   return isMobile;
 };
 
+// Is Desktop
+const useIsDesktop = () => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1200);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth  > 1200);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isDesktop;
+};
+
 export const ProductsCarrousel = ({ category, id, latest }) => {
   const [products, setProducts] = useState([]);
 
@@ -29,6 +50,8 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
   const navigate = useNavigate();
 
   const isMobile = useIsMobile();
+  const isDesktop = useIsDesktop();
+
 
   const URL = "http://localhost:8080/api/v1/products";
 
@@ -57,44 +80,57 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
   }, [category, id]);
 
   return (
-    <Swiper
-      modules={[Navigation, Autoplay]}
-      autoplay={{
-        delay: 1000,
-        disableOnInteraction: false, 
-      }}
-      onSwiper={(swiper) => setSwiperInstance(swiper)} 
-      slidesPerView={isMobile ? 1 : 2}
-      spaceBetween={10}
-      className="flex gap-4 bg-slate-50 rounded-2xl w-[350px] md:w-[780px] lg:w-full"
-    >
-      {products.length > 1 &&
-        products.map((product, index) => (
-          <SwiperSlide
-            key={index}
-            className="p-4 cursor-pointer group"
-            onMouseEnter={() => swiperInstance?.autoplay.stop()} // Stop autoplay
-            onMouseLeave={() => swiperInstance?.autoplay.start()}
-          >
-            <img
-              src={product.urlImage}
-              alt={product.name}
-              className="w-72 h-64 object-cover mx-auto aspect-[16/9]"
-            />
-            <p className="text-center mt-2 tracking-widest text-slate-700">
-              {product.name}
-            </p>
-            <div className="flex justify-center">
-              <button
-                className="w-[250px] lg:w-[350px] border border-slate-600 rounded-md py-2 text-slate-800 my-4 transition-all hover:bg-black hover:text-slate-50 hover:scale-105"
-                onClick={() => navigate(`/product/${product.id}`)}
-              >
-                Buy Now
-              </button>
-            </div>
-          </SwiperSlide>
-        ))}
-    </Swiper>
+    <article className="bg-white flex flex-col items-center pb-10">
+    <div className="py-4">
+      <h2 className="font-semibold text-3xl capitalize tracking-wider py-4 text-center">
+        {latest ? "Latest Products" : "You may also like"}
+      </h2>
+      <hr className="border-b-slate-900 border-b-2 w-[200px] mx-auto mb-8" />
+    </div>
+  
+    {/* Swiper */}
+    <div className=" w-[350px] md:w-[780px] lg:w-[1200px] px-4">
+      {products.length > 1 && (
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
+          onSwiper={(swiper) => setSwiperInstance(swiper)}
+          slidesPerView={isMobile ? 1 : isDesktop ? 3 : 2}
+          spaceBetween={10}
+        
+        >
+          {products.map((product, index) => (
+            <SwiperSlide
+              key={index}
+              className="cursor-pointer group border-slate-800 border rounded-sm"
+              onMouseEnter={() => swiperInstance?.autoplay.stop()}
+              onMouseLeave={() => swiperInstance?.autoplay.start()}
+            >
+              <img
+                src={product.urlImage}
+                alt={product.name}
+                className="w-72 h-64 object-cover mx-auto"
+              />
+              <p className="text-center mt-2 tracking-widest text-slate-700">
+                {product.name}
+              </p>
+              <div className="flex justify-center">
+                <button
+                  className="w-[250px] lg:w-[350px] border border-slate-600 rounded-md py-2 text-slate-800 my-4 transition-all hover:bg-black hover:text-slate-50 hover:scale-105"
+                  onClick={() => navigate(`/product/${product.id}`)}
+                >
+                  Buy Now
+                </button>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
+    </div>
+  </article>
+  
   );
 };
-

@@ -72,13 +72,7 @@ export const ProductDetailCard = ({ product }) => {
       </article>
 
       {/* Relationaded products */}
-      <div className="pt-20">
-          <h3 className=" text-4xl capitalize">You may also like</h3>
-          <hr className="border-black w-[100%] md:w-[50%] my-4" />
-        </div>
-      <article className="w-full p-8 flex flex-row justify-center">
-        <ProductsCarrousel category={product.category} id={product.id} />
-      </article>
+      <ProductsCarrousel category={product.category} id={product.id} />
     </>
   );
 };
