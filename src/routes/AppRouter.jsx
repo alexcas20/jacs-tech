@@ -4,6 +4,7 @@ import { Cart } from "../pages/Cart/Cart";
 import { Products } from "../pages/Products/Products";
 import { ResponsiveAppBar } from "../components/ResponsiveAppBar";
 import { ProductDetail} from "../pages/ProductDetail/ProductDetail";
+import { Footer } from "../components/Footer/Footer";
 
 export const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ export const AppRouter = () => {
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="*" element={<Home />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   );

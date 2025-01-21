@@ -18,7 +18,7 @@ export const Cart = () => {
   };
 
   return (
-    <>
+    <article className="pb-16 min-h-screen">
       {items.length > 0 ? (
         <>
           {/* Title page */}
@@ -95,6 +95,6 @@ export const Cart = () => {
       ) : (
         <CartEmpty />
       )}
-    </>
+    </article>
   );
 };
