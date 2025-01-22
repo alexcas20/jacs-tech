@@ -80,7 +80,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
   }, [category, id]);
 
   return (
-    <article className="bg-white flex flex-col items-center pb-10">
+    <article className="bg-white pb-10 px-4 ">
     <div className="py-4">
       <h2 className="font-semibold text-3xl capitalize tracking-wider py-4 text-center">
         {latest ? "Latest Products" : "You may also like"}
@@ -89,7 +89,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
     </div>
   
     {/* Swiper */}
-    <div className=" w-[350px] md:w-[780px] lg:w-[1200px] px-4">
+    <div className="flex justify-center items-center">
       {products.length > 1 && (
         <Swiper
           modules={[Navigation, Autoplay]}
@@ -100,6 +100,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           slidesPerView={isMobile ? 1 : isDesktop ? 3 : 2}
           spaceBetween={10}
+          className="max-w-[1200px] w-full"
         
         >
           {products.map((product, index) => (
@@ -112,7 +113,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
               <img
                 src={product.urlImage}
                 alt={product.name}
-                className="w-72 h-64 object-cover mx-auto"
+                className="w-64 h-64 object-cover mx-auto"
               />
               <p className="text-center mt-2 tracking-widest text-slate-700">
                 {product.name}
