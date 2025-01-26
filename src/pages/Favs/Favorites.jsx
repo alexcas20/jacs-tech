@@ -24,11 +24,11 @@ export const Favorites = () => {
   return (
     <article className="min-h-screen flex flex-col items-center md:flex-row md:px-8 md:justify-evenly">
       <div className="flex justify-center pt-10 md:h-screen md:items-center ">
-        <h2 className="text-2xl md:text-[40px] pl-2 my-2 border-l-4  font-sans font-bold border-blue-700  text-slate-950 sticky top-[40%]">
+        <h2 className="text-3xl md:text-[40px] pl-2 my-2 border-l-4  font-sans font-bold border-blue-700  text-slate-950 sticky top-[40%]">
           My Favorites
         </h2>
       </div>
-      <hr className="my-4 border w-60 md:hidden" />
+      <hr className="w-[70%] md:w-[15%] my-2 md:hidden " />
 
       {itemsFav.length ? (
         <div className="border mb-8 rounded-md mt-12 w-[90%] lg:w-[55%]">
