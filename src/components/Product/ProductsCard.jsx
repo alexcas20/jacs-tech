@@ -6,7 +6,7 @@ export const ProductsCard = ({ product }) => {
 
   return (
     <>
-      <div className=" bg-slate-100 rounded-xl pb-5 w-[340px] md:w-[350px] 2xl:w-[430px] h-[420px] 2xl:h-[450px] cursor-pointer shadow-lg shadow-slate-300 transition-all hover:scale-105">
+      <div className=" bg-slate-100 rounded-xl pb-5 w-[340px] h-[420px] 2xl:h-[450px] cursor-pointer shadow-lg shadow-slate-300 transition-all hover:scale-105">
         <div className="flex items-center justify-center h-56 ">
           <img
             className="w-full h-full object-cover"

@@ -17,7 +17,7 @@ export const Products = () => {
     getProducts();
   }, []);
   return (
-    <article className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-items-center p-4 pt-12 gap-6 md:gap-6 2xl:gap-24 2xl:p-10 mb-8">
+    <article className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))]  place-items-center md:px-12 pt-12 gap-6 md:gap-6 lg:px-[108px] 2xl:gap-[43px] 2xl:px-72 mb-8">
       {products.map((product) => (
         <ProductsCard key={product.id} product={product} />
       ))}

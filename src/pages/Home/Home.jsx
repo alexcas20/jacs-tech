@@ -9,7 +9,7 @@ export const Home = () => {
         <img
           src={homeImg}
           alt="Setup Gaming"
-          className="object-cover opacity-95 w-full h-[550px]"
+          className="object-cover opacity-95 w-full h-[500px]"
         />
         <div className="absolute bottom-0  bg-slate-950 w-full h-1/4 p-12 md:p-10 transition-all group-hover:h-[35%] group-hover:py-1 md:group-hover:h-1/4 md:group-hover:p-8">
           <h3 className="tracking-wide capitalize text-slate-50 text-xl md:text-4xl text-center font-thin transition-all group-hover:opacity-0 md:group-hover:opacity-100 md:group-hover:text-3xl group-hover:text-start ">
