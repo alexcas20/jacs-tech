@@ -1,11 +1,27 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../../features/cartSlice";
 import { QuantitySelector } from "../QuantitySelector";
 import { Rating } from "../Rating";
 import { ProductsCarrousel } from "./ProductsCarrousel";
+import { HeartIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+import { addFav } from "../../features/favSlice";
 
 export const ProductDetailCard = ({ product }) => {
+  // for while, get itemsFav to know which products are favorites
+  const itemsFav = useSelector((state) => state.fav.favItems);
+
+  // Favs state
+  const [isFav, setIsFav] = useState(false);
+
+  useEffect(() => {
+    console.log(itemsFav);
+    // check if product is in favorites
+    const someIsFav = itemsFav.some((item) => item.id === product.id);
+    setIsFav(someIsFav);
+  }, [itemsFav, product.id]);
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -18,10 +34,18 @@ export const ProductDetailCard = ({ product }) => {
     alert("Added Item to cart");
   };
 
+  // add to favs
+  const handleAddToFavs = ({ id, name, urlImage, price }) => {
+    const itemsFav = { id, name, urlImage, price };
+    console.log(itemsFav);
+    dispatch(addFav(itemsFav));
+    setIsFav(!isFav);
+  };
+
   return (
     <>
       <article className="flex flex-col items-center md:flex-row gap-8">
-        <div className="w-[320px] h-[350px] md:h-[600px] md:w-[700px]">
+        <div className="w-[320px] h-[350px] md:h-[600px] md:w-[700px] relative">
           <img
             src={product.urlImage}
             alt={product.name}
@@ -30,7 +54,7 @@ export const ProductDetailCard = ({ product }) => {
         </div>
 
         {/* product info */}
-        <div>
+        <div className="px-1 py-6 rounded-md relative">
           <h5 className="uppercase text-xl text-slate-500">
             {product.category}
           </h5>
@@ -38,15 +62,48 @@ export const ProductDetailCard = ({ product }) => {
 
           {/*    Rating stars */}
           <Rating rate={productRate} />
-
           <p className="tracking-wider text-3xl py-6 text-slate-700">
             ${product.price}
           </p>
           <p className="text-slate-600 text-lg">{product.description}</p>
 
+          {/*   Favorite Button */}
+          <div className="cursor-pointer bg-slate-900 w-[200px] my-3 text-slate-50 p-2 rounded-lg">
+            <button
+              className="flex gap-3 items-center"
+              onClick={() => handleAddToFavs(product)}
+            >
+              <HeartIcon
+                className={`w-6 transition-all hover:text-red-600 ${
+                  isFav ? "text-red-600 animate-beat " : "text-slate-100"
+                }`}
+              />
+
+              <div className="flex items-center">
+                <span
+                  className={`absolute transition-all duration-200 ${
+                    isFav
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-[50%]"
+                  }`}
+                >
+                  Added To Favorites
+                </span>
+                <span
+                  className={`absolute transition-all duration-200 ${
+                    !isFav
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-[50%]"
+                  }`}
+                >
+                  Add To Favorites
+                </span>
+              </div>
+            </button>
+          </div>
+
           {/*  Quantity selector */}
           <QuantitySelector product={product} onAddToCart={handleAddToCart} />
-
           <div className="flex gap-6 mt-3">
             {product.quantity !== undefined ? (
               <button
