@@ -18,7 +18,7 @@ export const ResponsiveAppBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-slate-900 text-slate-50 sticky top-0 z-10">
+    <header className="bg-slate-900 text-slate-50 sticky top-0 z-10 md:my-4 md:rounded-2xl md:w-[96%] md:mx-auto lg:w-[60%]">
       <nav className="px-4 py-10 md:flex md:justify-around">
         <div className="flex justify-between items-center">
           <h3 className="font-extrabold text-2xl">Jacs Tech</h3>
