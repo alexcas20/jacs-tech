@@ -79,11 +79,11 @@ export const Favorites = () => {
         // No favs products
         <div className="flex flex-col items-center gap-8 cursor-pointer group">
           <img
-            className="w-52 pt-10 invert-0"
+            className="w-52 pt-10 invert-0 animate-beat"
             src={NotFavs}
             alt="There aren't any product"
           />
-          <p className="text-lg tracking-wider text-slate-600">
+          <p className="text-lg tracking-wider text-slate-600 block text-center">
             There aren't any products added to favorites yet!
           </p>
           <button className="text-slate-50 bg-slate-950 px-4 py-2 rounded-lg flex gap-2 items-center shadow-md transition-all duration-300 opacity-0 translate-y-80 hover:bg-slate-800 group-hover:translate-y-0 group-hover:opacity-100 "
