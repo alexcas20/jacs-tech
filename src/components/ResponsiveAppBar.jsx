@@ -17,8 +17,14 @@ export const ResponsiveAppBar = () => {
   // mobile appbar
   const [isOpen, setIsOpen] = useState(false);
 
+  // navigate to cart mobile nav
+  const handleNavigate = () => {
+    navigate("/cart");
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <header className="bg-slate-900 text-slate-50 sticky top-0 z-10 md:my-4 md:rounded-2xl md:w-[96%] md:mx-auto lg:w-[60%]">
+    <header className="bg-slate-900 text-slate-50 sticky top-0 z-10 md:my-4 md:rounded-2xl md:w-[96%] md:mx-auto lg:w-[95%]">
       <nav className="px-4 py-10 md:flex md:justify-around">
         <div className="flex justify-between items-center">
           <h3 className="font-extrabold text-2xl">Jacs Tech</h3>
@@ -89,8 +95,10 @@ export const ResponsiveAppBar = () => {
             <UserIcon className="w-4" />
             Login
           </button>
-          <button className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex items-center gap-2"
-          onClick={() => navigate("/cart")}>
+          <button
+            className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex items-center gap-2"
+            onClick={handleNavigate}
+          >
             <ShoppingCartIcon className="w-4" />
             Cart ({items.length})
           </button>
