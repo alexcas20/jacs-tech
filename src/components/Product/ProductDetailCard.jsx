@@ -44,11 +44,11 @@ export const ProductDetailCard = ({ product }) => {
   return (
     <>
       <article className="flex flex-col items-center md:flex-row gap-8">
-        <div className="w-[250px] h-[210px] md:h-[600px] md:w-[700px] relative">
+        <div className="w-[250px] h-[210px] md:w-[300px] md:h-[400px] lg:w-[500px] 2xl:h-[500px] 2xl:w-[700px] relative">
           <img
             src={product.urlImage}
             alt={product.name}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </div>
 
