@@ -30,7 +30,7 @@ export const Cart = () => {
           {/*  ItemList */}
           <div className="p-4 md:flex md:gap-5 md:justify-center">
             <div className="border rounded-md mb-2 md:w-[600px] ">
-              <h3 className="bg-slate-50 border-b p-3 text-xl font-medium">
+              <h3 className="bg-slate-100 border-b p-3 text-xl font-medium">
                 Item List
               </h3>
               {items.map((product, i) => (
@@ -62,7 +62,7 @@ export const Cart = () => {
 
             {/* Order summary */}
             <div className="border md:w-[280px] h-[220px] rounded-md sticky top-[30%]">
-              <h3 className="bg-slate-50 border-b p-3 text-lg font-medium ">
+              <h3 className="bg-slate-100 border-b p-3 text-lg font-medium ">
                 Order Summary
               </h3>
 

@@ -6,10 +6,10 @@ export const ProductsCard = ({ product }) => {
 
   return (
     <>
-      <div className=" bg-slate-100 rounded-xl pb-5 w-[320px] h-[420px] md:w-[250px] 2xl:w-[420px] 2xl:h-[450px] cursor-pointer shadow-md shadow-slate-300 transition-all hover:scale-105">
+      <div className=" bg-slate-100 shadow-sm rounded-lg pb-5 w-[320px] h-[420px] md:w-[270px] lg:w-[280px] 2xl:w-[320px] 2xl:h-[450px] cursor-pointer  transition-all hover:scale-105">
         <div className="flex items-center justify-center h-56 ">
           <img
-            className="w-full h-full object-cover"
+            className="w-[95%] h-full object-cover"
             src={product.urlImage}
             alt={product.name}
           />
@@ -20,8 +20,8 @@ export const ProductsCard = ({ product }) => {
         <div className="p-3 h-1/2 flex flex-col justify-around ">
           {/*  description */}
           <div>
-            <h3 className="font-bold">{product.name}</h3>
-            <p className="text-slate-600 text-sm">{product.description}</p>
+            <h3 className="font-semibold">{product.name}</h3>
+            <p className="text-slate-600 text-xs">{product.description}</p>
           </div>
 
           {/*  price/stock */}

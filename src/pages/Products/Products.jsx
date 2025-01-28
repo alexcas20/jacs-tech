@@ -79,7 +79,7 @@ export const Products = () => {
   };
 
   return (
-    <article className="flex flex-col md:flex-row mt-10 md:gap-10 md:justify-around min-h-screen ">
+    <article className="flex flex-col md:flex-row mt-10 md:gap-1 md:justify-around min-h-screen ">
       {/*   Filters */}
       <Filter
         category={category}
@@ -88,7 +88,7 @@ export const Products = () => {
         actionSelected={actionSelected}
         handleSort={handleSort}
       />
-      <div className=" flex flex-wrap justify-center gap-5 mb-12 w-full">
+      <div className="grid grid-cols-1 place-items-center place-content-center w-full mb-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:w-[80%] lg:w-[70%]">
         {products.map((product) => (
           <ProductsCard key={product.id} product={product} />
         ))}

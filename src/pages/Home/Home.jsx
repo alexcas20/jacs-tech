@@ -4,7 +4,7 @@ import { ProductsCarrousel } from "../../components/Product/ProductsCarrousel";
 
 export const Home = () => {
   return (
-    <div className="bg-slate-200 h-full">
+    <div className="h-full">
       <div className="relative group cursor-pointer ">
         <img
           src={homeImg}
