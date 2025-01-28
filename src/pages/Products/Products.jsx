@@ -76,7 +76,7 @@ export const Products = () => {
   };
 
   return (
-    <article className="flex flex-col md:flex-row mt-10 md:gap-1 md:justify-around min-h-screen ">
+    <article className="flex flex-col md:flex-row mt-8 md:gap-1 md:justify-around min-h-screen ">
       {/*   Filters */}
       <Filter
         category={category}
