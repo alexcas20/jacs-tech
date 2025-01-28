@@ -4,7 +4,7 @@ import { CartEmpty } from "../../components/CartEmpty";
 
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { QuantitySelector } from "../../components/QuantitySelector";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -22,27 +22,25 @@ export const Cart = () => {
             Are you sure of delete this product?
           </span>
           <div className="flex gap-2">
-          <button
-            className="px-2 py-1 bg-red-600 rounded-md text-slate-50 transition-transform duration-300 hover:-translate-y-1"
-            onClick={() => toast.dismiss(t.id)}
-          >
-            Dismiss
-          </button>
-          <button
-          className="px-2 py-1 bg-green-600 rounded-md text-slate-50 transition-transform duration-300 hover:-translate-y-1"
-            onClick={() => {
-              dispatch(deleteItem(id)), toast.dismiss(t.id);
-            }}
-          >
-            Confirm
-          </button>
+            <button
+              className="px-2 py-1 bg-red-600 rounded-md text-slate-50 transition-transform duration-300 hover:-translate-y-1"
+              onClick={() => toast.dismiss(t.id)}
+            >
+              Dismiss
+            </button>
+            <button
+              className="px-2 py-1 bg-green-600 rounded-md text-slate-50 transition-transform duration-300 hover:-translate-y-1"
+              onClick={() => {
+                dispatch(deleteItem(id)), toast.dismiss(t.id);
+              }}
+            >
+              Confirm
+            </button>
           </div>
-        
         </div>
       ),
       {
         duration: 5000,
-        position: "bottom-center",
       }
     );
   };
@@ -70,14 +68,6 @@ export const Cart = () => {
                   <XMarkIcon
                     className="w-5 absolute right-5 top-3 cursor-pointer"
                     onClick={() => onDeleteItem(product.id)}
-                  />
-                  <Toaster
-                    toastOptions={{
-                      style: {
-                        background: "#1e293b",
-                        color: "#fff",
-                      },
-                    }}
                   />
 
                   <div className=" flex flex-col items-center">

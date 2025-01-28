@@ -8,12 +8,22 @@ import { Footer } from "../components/Footer/Footer";
 import { Favorites } from "../pages/Favs/Favorites";
 import { ScrollToPage } from "../components/shared/ScrollToPage";
 import { AnimatedPage } from "../components/shared/AnimatedPage";
+import { Toaster } from "react-hot-toast";
 
 export const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
         <ResponsiveAppBar />
+        <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: '#1e293b',
+            color: '#fff',
+          },
+        }}
+      />
         <ScrollToPage />
         <Routes>
           <Route

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 const initialState = {
   items: [],
@@ -18,9 +19,14 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
 
-        console.log("ya estaba en el carrito");
+        toast("Already item in cart (+1)", {
+          icon: "🛒",
+        });
       } else {
         state.items.push(action.payload);
+        toast("Item added to cart", {
+          icon: "🛒",
+        });
       }
 
       state.totalAmount = state.items.reduce(
@@ -55,7 +61,9 @@ const cartSlice = createSlice({
           selectedItem.quantity += 1;
           state.totalAmount += action.payload.price;
         } else {
-          alert("maximo stock");
+          toast("No more stock", {
+            icon: "📦",
+          });
         }
       }
     },

@@ -4,7 +4,7 @@ import { deleteFav } from "../../features/favSlice";
 import { useNavigate } from "react-router-dom";
 
 import NotFavs from "../../assets/icons/sad_favs.svg";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export const Favorites = () => {
   // get data from reducer
@@ -15,7 +15,6 @@ export const Favorites = () => {
 
   // delete of fav items
   const handleDeleteFav = ({ id }) => {
-
     /* show toast */
     toast(
       (t) => (
@@ -43,7 +42,6 @@ export const Favorites = () => {
       ),
       {
         duration: 5000,
-        position: "bottom-center",
       }
     );
   };
@@ -88,14 +86,6 @@ export const Favorites = () => {
                     <button onClick={() => handleDeleteFav(item)}>
                       <XMarkIcon className="w-6" />
                     </button>
-                    <Toaster
-                      toastOptions={{
-                        style: {
-                          background: "#1e293b",
-                          color: "#fff",
-                        },
-                      }}
-                    />
                   </div>
 
                   {/* Buy now Hover */}
