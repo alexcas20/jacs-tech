@@ -22,12 +22,10 @@ export const QuantitySelector = ({ product, onAddToCart }) => {
 
   // add cant
   const onAddCant = () => {
-    if (quantity < product.stock) {
-      if (product.quantity !== undefined) {
-        dispatch(addCant(product));
-      } else {
-        setLocalQuantity((prev) => prev + 1);
-      }
+    if (product.quantity !== undefined) {
+      dispatch(addCant(product));
+    } else {
+      setLocalQuantity((prev) => prev + 1);
     }
   };
 
