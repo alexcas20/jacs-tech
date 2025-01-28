@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { Title } from "../shared/Title";
 
 export const Review = () => {
   const testimonials = [
@@ -40,15 +41,12 @@ export const Review = () => {
   }, [position]);
 
   return (
-    <article className="flex flex-col items-center py-5">
-      <div className="mb-4 flex flex-col items-center">
-        <h3 className="text-center text-4xl">Our Reviews</h3>
-        <hr className="w-[60%] border-black my-2" />
-      </div>
+    <article className="flex flex-col items-center py-1">
+      <Title title="Our Reviews" />
 
       {/* Card */}
       <div className="w-[350px] md:w-[700px] ">
-        <div className="bg-slate-50 p-4 flex flex-col items-center gap-8 rounded-lg h-[450px] shadow-xl  ">
+        <div className="bg-slate-100 p-4 flex flex-col items-center gap-8 rounded-lg h-[450px] shadow-xl  ">
           <div>
             <img
               src={testimonials[position].image}
