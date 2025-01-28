@@ -103,7 +103,7 @@ export const Filter = ({
       )}
 
       {/* Desktop filter */}
-      <div className=" hidden md:block w-[350px] md:w-[250px] h-1/2 md:sticky md:top-[30%] lg:left-24 2xl:left-36 text-slate-950 px-2 py-4 rounded-md border mb-8 ml-4">
+      <div className=" hidden md:block w-[350px] md:w-[200px] h-1/2 md:sticky md:top-[30%] lg:left-24 2xl:left-36 text-slate-950 px-2 py-4 rounded-md border mb-8 ml-4">
         <div className="flex flex-col font-bold">
           <span className="my-1">Category:</span>
 
@@ -129,7 +129,7 @@ export const Filter = ({
               <button
                 key={i}
                 className={`" p-1 flex justify-center w-[80px] rounded-md gap-1 capitalize text-sm " ${
-                  action === actionSelected ? "bg-slate-100 " : "border"
+                  action === actionSelected ? "bg-slate-300 " : "border"
                 }`}
                 onClick={() => onSort(action)}
               >

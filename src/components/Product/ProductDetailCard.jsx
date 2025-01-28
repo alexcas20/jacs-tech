@@ -45,7 +45,7 @@ export const ProductDetailCard = ({ product }) => {
   return (
     <>
       <article className="flex flex-col items-center md:flex-row gap-8">
-        <div className="w-[320px] h-[350px] md:h-[600px] md:w-[700px] relative">
+        <div className="w-[250px] h-[210px] md:h-[600px] md:w-[700px] relative">
           <img
             src={product.urlImage}
             alt={product.name}
