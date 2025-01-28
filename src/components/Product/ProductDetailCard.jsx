@@ -7,6 +7,7 @@ import { ProductsCarrousel } from "./ProductsCarrousel";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { addFav } from "../../features/favSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 export const ProductDetailCard = ({ product }) => {
   // for while, get itemsFav to know which products are favorites
@@ -30,8 +31,10 @@ export const ProductDetailCard = ({ product }) => {
 
   // add to cart
   const handleAddToCart = (product) => {
+    toast.success("Added to cart", {
+      position: "bottom-center",
+    });
     dispatch(addItem(product));
-    alert("Added Item to cart");
   };
 
   // add to favs
@@ -98,6 +101,14 @@ export const ProductDetailCard = ({ product }) => {
                 >
                   Add To Favorites
                 </span>
+                <Toaster
+                 toastOptions={{
+                  style: {
+                    background: '#1e293b',
+                    color: '#fff',
+                    width: '160px',
+                  },
+                }} />
               </div>
             </button>
           </div>

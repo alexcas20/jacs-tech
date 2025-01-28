@@ -4,6 +4,7 @@ import { CartEmpty } from "../../components/CartEmpty";
 
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { QuantitySelector } from "../../components/QuantitySelector";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -14,7 +15,36 @@ export const Cart = () => {
 
   // delete Item
   const onDeleteItem = (id) => {
-    dispatch(deleteItem(id));
+    toast(
+      (t) => (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-semibold">
+            Are you sure of delete this product?
+          </span>
+          <div className="flex gap-2">
+          <button
+            className="px-2 py-1 bg-red-600 rounded-md text-slate-50 transition-transform duration-300 hover:-translate-y-1"
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Dismiss
+          </button>
+          <button
+          className="px-2 py-1 bg-green-600 rounded-md text-slate-50 transition-transform duration-300 hover:-translate-y-1"
+            onClick={() => {
+              dispatch(deleteItem(id)), toast.dismiss(t.id);
+            }}
+          >
+            Confirm
+          </button>
+          </div>
+        
+        </div>
+      ),
+      {
+        duration: 5000,
+        position: "bottom-center",
+      }
+    );
   };
 
   return (
@@ -23,7 +53,9 @@ export const Cart = () => {
         <>
           {/* Title page */}
           <div className="py-2 px-8 pt-6 md:pt-10 flex flex-col items-center mb-8">
-            <h2 className="text-3xl md:text-[40px] pl-2 my-2 border-l-4  font-sans font-bold border-blue-700  text-slate-950">My Cart</h2>
+            <h2 className="text-3xl md:text-[40px] pl-2 my-2 border-l-4  font-sans font-bold border-blue-700  text-slate-950">
+              My Cart
+            </h2>
             <hr className="w-[70%] md:w-[15%] my-2 md:hidden " />
           </div>
 
@@ -38,6 +70,14 @@ export const Cart = () => {
                   <XMarkIcon
                     className="w-5 absolute right-5 top-3 cursor-pointer"
                     onClick={() => onDeleteItem(product.id)}
+                  />
+                  <Toaster
+                    toastOptions={{
+                      style: {
+                        background: "#1e293b",
+                        color: "#fff",
+                      },
+                    }}
                   />
 
                   <div className=" flex flex-col items-center">

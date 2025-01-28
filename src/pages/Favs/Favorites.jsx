@@ -4,6 +4,7 @@ import { deleteFav } from "../../features/favSlice";
 import { useNavigate } from "react-router-dom";
 
 import NotFavs from "../../assets/icons/sad_favs.svg";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Favorites = () => {
   // get data from reducer
@@ -14,8 +15,37 @@ export const Favorites = () => {
 
   // delete of fav items
   const handleDeleteFav = ({ id }) => {
-    if (id !== undefined || null) dispatch(deleteFav(id));
-    else alert("id not found");
+
+    /* show toast */
+    toast(
+      (t) => (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-semibold">
+            Are you sure of delete this product?
+          </span>
+          <div className="flex gap-2">
+            <button
+              className="px-2 py-1 bg-red-600 rounded-md text-slate-50 transition-transform duration-300 hover:hover:scale-105"
+              onClick={() => toast.dismiss(t.id)}
+            >
+              Dismiss
+            </button>
+            <button
+              className="px-2 py-1 bg-green-600 rounded-md text-slate-50 transition-transform duration-300 hover:scale-105"
+              onClick={() => {
+                dispatch(deleteFav(id)), toast.dismiss(t.id);
+              }}
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: 5000,
+        position: "bottom-center",
+      }
+    );
   };
 
   // navigate
@@ -58,6 +88,14 @@ export const Favorites = () => {
                     <button onClick={() => handleDeleteFav(item)}>
                       <XMarkIcon className="w-6" />
                     </button>
+                    <Toaster
+                      toastOptions={{
+                        style: {
+                          background: "#1e293b",
+                          color: "#fff",
+                        },
+                      }}
+                    />
                   </div>
 
                   {/* Buy now Hover */}
@@ -86,8 +124,10 @@ export const Favorites = () => {
           <p className="text-lg tracking-wider text-slate-600 block text-center">
             There aren't any products added to favorites yet!
           </p>
-          <button className="text-slate-50 bg-slate-950 px-4 py-2 rounded-lg flex gap-2 items-center shadow-md transition-all duration-300 opacity-0 translate-y-80 hover:bg-slate-800 group-hover:translate-y-0 group-hover:opacity-100 "
-          onClick={() => navigate("/products")}>
+          <button
+            className="text-slate-50 bg-slate-950 px-4 py-2 rounded-lg flex gap-2 items-center shadow-md transition-all duration-300 opacity-0 translate-y-80 hover:bg-slate-800 group-hover:translate-y-0 group-hover:opacity-100 "
+            onClick={() => navigate("/products")}
+          >
             <ArrowLeftIcon className="w-5" />
             Back To Shop
           </button>
