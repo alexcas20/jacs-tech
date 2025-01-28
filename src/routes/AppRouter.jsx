@@ -6,19 +6,66 @@ import { ResponsiveAppBar } from "../components/ResponsiveAppBar";
 import { ProductDetail } from "../pages/ProductDetail/ProductDetail";
 import { Footer } from "../components/Footer/Footer";
 import { Favorites } from "../pages/Favs/Favorites";
+import { ScrollToPage } from "../components/shared/ScrollToPage";
+import { AnimatedPage } from "../components/shared/AnimatedPage";
 
 export const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
         <ResponsiveAppBar />
+        <ScrollToPage />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favs" element={<Favorites />} />
-          <Route path="*" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <AnimatedPage>
+                <Home />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <AnimatedPage>
+                <Products />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <AnimatedPage>
+                <ProductDetail />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <AnimatedPage>
+                {" "}
+                <Cart />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/favs"
+            element={
+              <AnimatedPage>
+                {" "}
+                <Favorites />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <AnimatedPage>
+                <Home />
+              </AnimatedPage>
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
