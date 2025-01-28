@@ -22,7 +22,7 @@ export const ProductDetail = () => {
   }, [id]);
 
   return (
-    <article className="container mx-auto py-20 px-10">
+    <article className="container mx-auto px-10">
       <ProductDetailCard product={product} />
     </article>
   );

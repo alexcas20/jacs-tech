@@ -37,7 +37,7 @@ export const QuantitySelector = ({ product, onAddToCart }) => {
   };
 
   return (
-    <div className="py-5">
+    <div className="py-3">
       <div className="flex items-center gap-4">
         <button
           className="font-semibold text-2xl bg-slate-100 w-[50px] rounded-md shadow-md py-1 transition-colors hover:bg-slate-200"

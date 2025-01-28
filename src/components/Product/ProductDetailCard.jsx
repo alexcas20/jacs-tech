@@ -43,8 +43,8 @@ export const ProductDetailCard = ({ product }) => {
 
   return (
     <>
-      <article className="flex flex-col items-center md:flex-row gap-8 ">
-        <div className="w-[250px] h-[210px] md:w-[600px] md:h-[500px] lg:w-[450px] lg:h-[380px] 2xl:h-[500px] 2xl:w-[700px] relative">
+      <article className="flex flex-col items-center md:flex-row md:justify-center gap-8 ">
+        <div className="w-[250px] h-[210px] md:w-[600px] md:h-[500px] lg:w-[350px] lg:h-[320px] 2xl:h-[500px] 2xl:w-[700px] relative">
           <img
             src={product.urlImage}
             alt={product.name}
