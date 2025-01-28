@@ -63,7 +63,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
       const latestProducts = data
         .sort((a, b) => b.price - a.price)
         .slice(0, 10);
-      console.log(latestProducts);
+
       setProducts(latestProducts);
     } else {
       // filter for category

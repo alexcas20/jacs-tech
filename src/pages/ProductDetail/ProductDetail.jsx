@@ -15,7 +15,6 @@ export const ProductDetail = () => {
     const response = await fetch(URL + id);
     const data = await response.json();
     setProduct(data);
-    console.log(data);
   };
 
   useEffect(() => {

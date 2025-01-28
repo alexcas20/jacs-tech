@@ -12,7 +12,7 @@ export const Products = () => {
   const getProducts = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data);
+
     const categoryArr = data.map((product) => product.category);
     setCategory([...new Set(categoryArr)]);
     setProducts(data);
@@ -30,7 +30,6 @@ export const Products = () => {
 
   // change category
   const onChangeCategory = (category) => {
-    console.log(category);
     setCategorySelected(category);
     setActionSelected("");
     if (category === "all") {
@@ -39,14 +38,14 @@ export const Products = () => {
       const filteredProducts = allProducts.filter(
         (product) => product.category === category
       );
-      console.log(filteredProducts);
+
       setProducts([...filteredProducts]);
     }
   };
 
-   // sort products
+  // sort products
 
-   const handleSort = (action) => {
+  const handleSort = (action) => {
     switch (action) {
       case "low":
         setActionSelected("low");
@@ -62,8 +61,6 @@ export const Products = () => {
         break;
 
       default:
-        console.log("quit");
-        console.log(categorySelected);
         setActionSelected("");
         if (categorySelected === "all") {
           setProducts([...allProducts]);

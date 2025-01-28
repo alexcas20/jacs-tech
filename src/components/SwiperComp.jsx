@@ -7,8 +7,6 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 
 export const SwiperComp = ({ items }) => {
-  console.log(items);
-
   // navigate to item
   const navigate = useNavigate();
 

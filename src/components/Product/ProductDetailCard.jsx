@@ -17,7 +17,6 @@ export const ProductDetailCard = ({ product }) => {
   const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
-    console.log(itemsFav);
     // check if product is in favorites
     const someIsFav = itemsFav.some((item) => item.id === product.id);
     setIsFav(someIsFav);
@@ -40,7 +39,7 @@ export const ProductDetailCard = ({ product }) => {
   // add to favs
   const handleAddToFavs = ({ id, name, urlImage, price }) => {
     const itemsFav = { id, name, urlImage, price };
-    console.log(itemsFav);
+
     dispatch(addFav(itemsFav));
     setIsFav(!isFav);
   };
@@ -102,13 +101,14 @@ export const ProductDetailCard = ({ product }) => {
                   Add To Favorites
                 </span>
                 <Toaster
-                 toastOptions={{
-                  style: {
-                    background: '#1e293b',
-                    color: '#fff',
-                    width: '160px',
-                  },
-                }} />
+                  toastOptions={{
+                    style: {
+                      background: "#1e293b",
+                      color: "#fff",
+                      width: "160px",
+                    },
+                  }}
+                />
               </div>
             </button>
           </div>
