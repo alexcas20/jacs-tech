@@ -13,8 +13,8 @@ export const AnimatedPage = ({children}) => {
   
     return (
         <div
-        className={`transition-all duration-700 ease-in-out transform ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-72'
+        className={`transition-opacity duration-1000 ease-in-out transform ${
+          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
         }`}
       >
         {children}

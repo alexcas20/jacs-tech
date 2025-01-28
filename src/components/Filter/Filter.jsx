@@ -35,7 +35,7 @@ export const Filter = ({
         }`}
       >
         <AdjustmentsHorizontalIcon
-          className="w-10 text-slate-800 transition-transform hover:scale-105"
+          className="w-10 text-slate-800 transition-transform hover:scale-105 "
           onClick={() => setMobileFilter(!mobileFilter)}
         />
       </div>
@@ -43,7 +43,7 @@ export const Filter = ({
       {/* Mobile filter */}
       {mobileFilter && (
         <div
-          className={`fixed bottom-0 left-0 w-full h-[55%] z-30 bg-slate-900 text-slate-50 transition-all duration-500 cursor-pointer rounded-t-2xl md:hidden ${
+          className={`fixed bottom-0 left-0 w-full h-[100%] z-30 bg-slate-900 text-slate-50 transition-all duration-500 cursor-pointer rounded-t-2xl md:hidden ${
             mobileFilter ? "translate-y-0" : "translate-y-full"
           } `}
         >
