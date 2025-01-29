@@ -1,26 +1,40 @@
+import logo from "../../assets/logo/logo-jacs.png";
 export const Footer = () => {
-    return (
-      <footer
-        className="bg-slate-900 flex flex-col items-center justify-center text-slate-50 py-4 px-5 
-      md:flex-row md:items-center md:justify-between"
-      >
-        <div className=" md:w-[500px] flex justify-center items-center gap-2 pb-5 md:pb-0">
-          <h3 className="text-6xl">JACS TECH</h3>
-          <p className="text-sm text-balance text-slate-400">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
-            beatae exercitationem nobis blanditiis voluptatibus dicta soluta
-            consequatur alias rem voluptatum. Libero corporis facere odit
-            voluptatem architecto voluptas dignissimos debitis cum.
-          </p>
-        </div>
-  
-        <div className="flex flex-col justify-between h-[100px]">
-          {/* From Uiverse.io by shubhamshahane1234 */}
-          <div className="flex items-center justify-center gap-4">
-            <div className="social-button">
+  return (
+    <footer
+      className="bg-slate-900 flex flex-col items-center justify-between text-slate-50 py-4 px-5 
+      lg:flex-row lg:items-center"
+    >
+      <div className="md:w-[200px] flex justify-center items-center gap-8 pb-1 md:pb-0">
+        <img
+          src={logo}
+          alt="logo jacs tech"
+          className="w-[180px] md:w-[120px] object-cover"
+        />
+       
+      </div>
+
+      <div className="w-[80%] md:w-[50%]">
+      <p className="text-xs md:text-md text-slate-400 pb-8 md:p-0 ">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam nobis at ad ipsum consectetur possimus magnam, ipsam libero quisquam, maiores saepe obcaecati iusto tenetur id eos excepturi optio quos est.
+        </p>
+      </div>
+     
+     
+      <h3 className="capitalize tracking-widest opacity-60 font-semibold text-center pb-5 md:pt-6 lg:hidden ">follow me</h3>
+      <div className="flex flex-col justify-between h-[100px]">
+     
+        {/* From Uiverse.io by shubhamshahane1234 */}
+        <div className="flex items-center justify-center gap-4">
+          <div className="social-button">
+            <a
+              href="https://github.com/alexcas20"
+              target="_blank"
+              rel="noopener noreferrer "
+            >
               <button className="relative w-12 h-12 rounded-full group">
-                <div className="floater w-full h-full absolute top-0 left-0 bg-black rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-black rounded-full">
+                <div className="floater w-full h-full absolute top-0 left-0 bg-green-600 rounded-full duration-300 group-hover:-left-8 group-hover:shadow-2xl"></div>
+                <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-green-600 rounded-full">
                   <svg
                     height="24"
                     width="24"
@@ -35,11 +49,17 @@ export const Footer = () => {
                   </svg>
                 </div>
               </button>
-            </div>
-            <div className="social-button">
+            </a>
+          </div>
+          <div className="social-button">
+            <a
+              href="https://www.linkedin.com/in/jorge-calvillo-salas-29032523b"
+              target="_blank"
+              rel="noopener noreferrer "
+            >
               <button className="relative w-12 h-12 rounded-full group">
-                <div className="floater w-full h-full absolute top-0 left-0 bg-blue-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-blue-500 rounded-full">
+                <div className="floater w-full h-full absolute top-0 left-0 bg-cyan-600 rounded-full duration-300 group-hover:left-8 group-hover:shadow-2xl"></div>
+                <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-cyan-600 rounded-full">
                   <svg
                     height="24"
                     width="24"
@@ -54,11 +74,11 @@ export const Footer = () => {
                   </svg>
                 </div>
               </button>
-            </div>
+            </a>
           </div>
-          <h3>Made with ❤️ by Jacs </h3>
         </div>
-      </footer>
-    );
-  };
-  
+        <h3 className="tracking-widest">Made with ❤️ by Jacs </h3>
+      </div>
+    </footer>
+  );
+};
