@@ -50,7 +50,11 @@ export const Favorites = () => {
   const navigate = useNavigate();
 
   return (
-    <article className={`h-screen flex flex-col items-center md:flex-row md:px-8 md:justify-evenly ${!itemsFav.length ? "md:items-center" : "md:items-start"} `}>
+    <article
+      className={`pb-2 md:pb-0 flex flex-col items-center md:flex-row md:px-8 md:justify-evenly ${
+        !itemsFav.length ? "md:items-center" : "md:items-start"
+      } `}
+    >
       <div
         className={`flex justify-center pt-10 md:h-screen  ${
           !itemsFav.length ? "md:items-center" : "md:items-start"
@@ -62,8 +66,9 @@ export const Favorites = () => {
       </div>
       <hr className="w-[70%] md:w-[15%] my-2 md:hidden " />
 
+      {/* Favorites List */}
       {itemsFav.length ? (
-        <div className="border mb-8 rounded-md mt-12 w-[90%] lg:w-[55%]">
+        <div className="border mb-8 rounded-md mt-6 md:mt-12 w-[90%] lg:w-[55%]">
           <h3 className="bg-slate-100 text-xl p-3">Favorites List</h3>
           <hr />
 

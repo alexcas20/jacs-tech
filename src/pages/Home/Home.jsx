@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-full px-6 2xl:px-0 2xl:container 2xl:mx-auto">
+    <div className="h-full md:px-6 2xl:px-0 2xl:container 2xl:mx-auto">
       {/* Banner */}
       <div className="w-full lg:px-4">
         <div className="flex items-center bg-slate-100 flex-col-reverse md:flex-row rounded-xl ">
@@ -32,7 +32,7 @@ export const Home = () => {
             <img
               src={homeImg}
               alt="Setup Gaming"
-              className="object-cover w-full h-[500px] md:h-[600px] lg:h-[400px] 2xl:h-[500px] md:rounded-br-md md:rounded-tr-md"
+              className="object-cover w-full h-[550px] md:h-[600px] lg:h-[400px] 2xl:h-[500px] md:rounded-br-md md:rounded-tr-md"
             />
           </div>
           

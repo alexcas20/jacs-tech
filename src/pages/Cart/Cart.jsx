@@ -5,6 +5,7 @@ import { CartEmpty } from "../../components/CartEmpty";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { QuantitySelector } from "../../components/QuantitySelector";
 import toast from "react-hot-toast";
+import { Title } from "../../components/shared/Title";
 
 export const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -46,16 +47,11 @@ export const Cart = () => {
   };
 
   return (
-    <article className="pb-16 min-h-screen">
+    <article className="pb-12 md:pb-32 lg:pb-0">
       {items.length > 0 ? (
         <>
           {/* Title page */}
-          <div className="py-2 px-8 pt-6 md:pt-10 flex flex-col items-center mb-8">
-            <h2 className="text-3xl md:text-[40px] pl-2 my-2 border-l-4  font-sans font-bold border-blue-700  text-slate-950">
-              My Cart
-            </h2>
-            <hr className="w-[70%] md:w-[15%] my-2 md:hidden " />
-          </div>
+          <Title title={"my cart"} />
 
           {/*  ItemList */}
           <div className="p-4 md:flex md:gap-5 md:justify-center">
