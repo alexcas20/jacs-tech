@@ -19,7 +19,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
 
-        toast("Already item in cart (+1)", {
+        toast(`Already item in cart (+${action.payload.quantity})`, {
           icon: "🛒",
         });
       } else {
