@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
 import { ProductsCard } from "../../components/Product/ProductsCard";
 import { Filter } from "../../components/Filter/Filter";
+import { useFetch } from "../../hooks/useFetch";
 
 export const Products = () => {
   //Request products
   const [products, setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
 
-  const URL = "http://localhost:8080/api/v1/products";
+  const { dataR } = useFetch({ route: "products" });
 
-  const getProducts = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
+  const getProducts = () => {
+    if (!dataR) return;
 
-    const categoryArr = data.map((product) => product.category);
+    const categoryArr = dataR.map((product) => product.category);
     setCategory([...new Set(categoryArr)]);
-    setProducts(data);
-    setAllProducts(data); // save all products
+    setProducts(dataR);
+    setAllProducts(dataR); // save all products
   };
 
   useEffect(() => {
+    console.log("cambio data");
     getProducts();
-  }, []);
+  }, [dataR]);
 
   // Filter products
   const [category, setCategory] = useState([]);
@@ -33,13 +34,13 @@ export const Products = () => {
     setCategorySelected(category);
     setActionSelected("");
     if (category === "all") {
-      setProducts([...allProducts]);
+      setProducts(allProducts);
     } else {
-      const filteredProducts = allProducts.filter(
+      const filteredProducts = [...allProducts].filter(
         (product) => product.category === category
       );
 
-      setProducts([...filteredProducts]);
+      setProducts(filteredProducts);
     }
   };
 
@@ -63,12 +64,12 @@ export const Products = () => {
       default:
         setActionSelected("");
         if (categorySelected === "all") {
-          setProducts([...allProducts]);
+          setProducts(allProducts);
         } else {
-          const filteredProducts = allProducts.filter(
+          const filteredProducts = [...allProducts].filter(
             (product) => product.category === categorySelected
           );
-          setProducts([...filteredProducts]);
+          setProducts(filteredProducts);
         }
 
         break;

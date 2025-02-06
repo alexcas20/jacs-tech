@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { Title } from "../shared/Title";
+import { useFetch } from "../../hooks/useFetch";
 
 // Is Mobile
 const useIsMobile = () => {
@@ -41,6 +42,7 @@ const useIsDesktop = () => {
 };
 
 export const ProductsCarrousel = ({ category, id, latest }) => {
+  // Array of products
   const [products, setProducts] = useState([]);
 
   // stop swiper
@@ -49,25 +51,24 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
   //Navigate
   const navigate = useNavigate();
 
+  // Views
   const isMobile = useIsMobile();
   const isDesktop = useIsDesktop();
 
-  const URL = "http://localhost:8080/api/v1/products";
+  const { dataR } = useFetch({ route: "products" });
 
-  const getProducts = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
-
+  const filterProducts = () => {
+    if (!dataR) return;
     // get last 10 products
     if (latest) {
-      const latestProducts = data
+      const latestProducts = dataR
         .sort((a, b) => b.price - a.price)
         .slice(0, 10);
 
       setProducts(latestProducts);
     } else {
       // filter for category
-      const filterCategory = data.filter(
+      const filterCategory = dataR.filter(
         (product) => product.category === category && product.id !== id
       );
       setProducts(filterCategory);
@@ -75,8 +76,8 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
   };
 
   useEffect(() => {
-    getProducts(URL);
-  }, [category, id]);
+    filterProducts();
+  }, [category, id, dataR]);
 
   return (
     <article className="pb-10 px-4 ">
