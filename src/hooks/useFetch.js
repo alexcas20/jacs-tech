@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = ({ route, param }) => {
+export const useFetch = ({ route }) => {
   const URL = "http://localhost:8080/api/v1";
 
   const [dataR, setDataR] = useState(null);
@@ -10,7 +10,7 @@ export const useFetch = ({ route, param }) => {
   const getData = async () => {
     try {
       setLoading(true);
-      const endpoit = param ? `${URL}/${route}/${param}` : `${URL}/${route}`;
+      const endpoit = `${URL}/${route}`;
       console.log("ruta: ", endpoit);
       const response = await fetch(endpoit);
 
@@ -18,6 +18,7 @@ export const useFetch = ({ route, param }) => {
         throw new Error("Error to get data");
       }
       const data = await response.json();
+      console.log(data);
 
       setDataR(data);
 
@@ -28,8 +29,9 @@ export const useFetch = ({ route, param }) => {
   };
 
   useEffect(() => {
+    if (!route) return;
     getData();
-  }, [route, param]);
+  }, [route]);
 
   return { dataR, loading, error };
 };
