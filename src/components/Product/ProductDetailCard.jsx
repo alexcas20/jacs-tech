@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../../features/cartSlice";
 import { QuantitySelector } from "../QuantitySelector";
-import { Rating } from "../Rating";
 import { ProductsCarrousel } from "./ProductsCarrousel";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { addFav } from "../../features/favSlice";
-import toast from "react-hot-toast";
+import { ReviewsProduct } from "../Reviews/ReviewsProduct";
+import { Rate } from "../Rate/Rate";
 
 export const ProductDetailCard = ({ product }) => {
   // for while, get itemsFav to know which products are favorites
@@ -25,8 +25,6 @@ export const ProductDetailCard = ({ product }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const productRate = 4;
 
   // add to cart
   const handleAddToCart = (product) => {
@@ -59,12 +57,15 @@ export const ProductDetailCard = ({ product }) => {
           </h5>
           <h3 className="text-5xl text-slate-800">{product.name}</h3>
 
-          {/*    Rating stars */}
-          <Rating rate={productRate} />
-          <p className="tracking-wider text-3xl py-6 text-slate-700">
+          <p className="tracking-wider text-3xl py-2 text-slate-700">
             ${product.price}
           </p>
-          <p className="text-slate-600 text-lg">{product.description}</p>
+
+          {/* Rate product */}
+          <Rate read={true} valueRate={product.rating} width={120} />
+
+          {/*    Description */}
+          <p className="text-slate-600 text-lg pt-2">{product.description}</p>
 
           {/*   Favorite Button */}
           <div className="cursor-pointer bg-slate-900 w-[200px] my-3 text-slate-50 p-2 rounded-lg">
@@ -126,6 +127,9 @@ export const ProductDetailCard = ({ product }) => {
           </div>
         </div>
       </article>
+
+      {/*  Reviews */}
+      <ReviewsProduct id={product.id} />
 
       {/* Relationaded products */}
       <ProductsCarrousel category={product.category} id={product.id} />
