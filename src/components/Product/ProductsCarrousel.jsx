@@ -80,7 +80,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
   }, [category, id, dataR]);
 
   return (
-    <article className="pb-10 px-4 ">
+    <article className="pb-10 px-4 lg:mt-10">
       <div className="py-4">
         <Title title={` ${latest ? "Latest Products" : "You may also like"}`} />
       </div>
@@ -102,7 +102,7 @@ export const ProductsCarrousel = ({ category, id, latest }) => {
             {products.map((product, index) => (
               <SwiperSlide
                 key={index}
-                className="cursor-pointer group bg-slate-100 rounded-lg shadow-md"
+                className="cursor-pointer group bg-slate-50 rounded-lg border border-slate-200"
                 onMouseEnter={() => swiperInstance?.autoplay.stop()}
                 onMouseLeave={() => swiperInstance?.autoplay.start()}
               >

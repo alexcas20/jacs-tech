@@ -41,27 +41,27 @@ export const Filter = ({
       </div>
 
       {/* Mobile filter */}
-      {mobileFilter && (
+    
         <div
-          className={`fixed bottom-0 left-0 w-full h-[100%] z-30 bg-slate-900 text-slate-50 transition-all duration-500 cursor-pointer rounded-t-2xl md:hidden ${
-            mobileFilter ? "translate-y-0" : "translate-y-full"
+          className={`fixed top-1 w-[95%] h-full z-50 bg-slate-900 text-slate-50 rounded-tr-lg transition-transform  md:hidden ${
+            mobileFilter ? "translate-x-0" : "translate-x-full opacity-0"
           } `}
         >
           <div className="flex justify-end p-4">
             <XMarkIcon
-              className="w-8 transition-transform hover:scale-110"
+              className="w-6 opacity-60 transition-opacity duration-200 hover:opacity-100 cursor-pointer"
               onClick={() => setMobileFilter(!mobileFilter)}
             />
           </div>
           {/* Title */}
-          <div className="px-4 mb-10">
+          <div className="px-4 py-4 text-center">
             <span className="text-2xl font-semibold tracking-wider">
               Filter And Sort
             </span>
-            <hr className="my-3 border-slate-400 w-[95%]" />
+            <hr className="pt-8 border-slate-400 w-[95%] my-3" />
           </div>
 
-          <div className="w-full h-full flex flex-col items-center justify-stretch gap-4">
+          <div className="w-full flex flex-col items-center justify-stretch gap-4">
             {/*  Category Select */}
             <span className="font-bold">Category:</span>
             <select
@@ -84,7 +84,7 @@ export const Filter = ({
               {actions.map((action, i) => (
                 <button
                   key={i}
-                  className={`" p-1 flex justify-center w-[100px] rounded-md gap-1 capitalize text-sm " ${
+                  className={`" p-1 flex justify-center w-[80px] rounded-md gap-1 capitalize text-sm " ${
                     action === actionSelected
                       ? "bg-slate-500 "
                       : "border border-slate-50"
@@ -95,14 +95,14 @@ export const Filter = ({
                 </button>
               ))}
               <XMarkIcon
-                className="w-4 transition-all hover:scale-125 absolute bottom-14 -right-10"
+                className="w-4 transition-transform hover:scale-125 absolute bottom-14 right-0"
                 onClick={() => onSort("quit")}
               />
             </div>
             <hr className="my-3  border-slate-400 w-[60%]" />
           </div>
         </div>
-      )}
+      
 
       {/* Desktop filter */}
       <div className=" hidden md:block w-[350px] md:w-[200px] h-1/2 md:sticky md:top-[30%] lg:left-24 2xl:left-36 text-slate-950 px-2 py-4 rounded-md border mb-8 ml-4">
