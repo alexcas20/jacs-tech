@@ -9,6 +9,7 @@ import { Favorites } from "../pages/Favs/Favorites";
 import { ScrollToPage } from "../components/shared/ScrollToPage";
 import { AnimatedPage } from "../components/shared/AnimatedPage";
 import { Toaster } from "react-hot-toast";
+import { ScrollToTop } from "../components/ScrollToTop/ScrollToTop";
 
 export const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ export const AppRouter = () => {
         }}
       />
         <ScrollToPage />
+        <ScrollToTop/>
         <Routes>
           <Route
             path="/"
