@@ -10,10 +10,10 @@ export const CartEmpty = () => {
       <h2 className="text-4xl text-center font-bold py-12">
         Ooops! You cart is empty!
       </h2>
-      <div className="flex flex-col items-center group cursor-pointer">
+      <div className="flex flex-col items-center group">
         <img src={cartEmpty} alt="cart empty" className="w-60 animate-beat" />
         <button
-          className="text-slate-50 bg-slate-950 px-4 py-2 rounded-lg flex gap-2 items-center shadow-md transition-all duration-300 opacity-0 translate-y-80 hover:bg-slate-800 group-hover:translate-y-0 group-hover:opacity-100 "
+          className="text-slate-50 bg-slate-950 px-4 py-2 rounded-lg flex gap-2 items-center shadow-md transition-all duration-300 opacity-0 translate-x-80 hover:bg-slate-800 group-hover:translate-x-0 group-hover:opacity-100 "
           onClick={() => navigate("/products")}
         >
           <ArrowLeftIcon className="w-5" />

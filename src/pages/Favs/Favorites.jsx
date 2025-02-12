@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import NotFavs from "../../assets/icons/sad_favs.svg";
 import toast from "react-hot-toast";
+import { Title } from "../../components/shared/Title";
 
 export const Favorites = () => {
   // get data from reducer
@@ -51,20 +52,17 @@ export const Favorites = () => {
 
   return (
     <article
-      className={`pb-2 md:pb-0 flex flex-col items-center md:flex-row md:px-8 md:justify-evenly ${
-        !itemsFav.length ? "md:items-center" : "md:items-start"
+      className={`min-h-screen pb-10 md:pb-0 flex flex-col md:flex-row md:items-start md:px-8 md:justify-evenly ${
+        !itemsFav.length ? "md:items-center lg:items-start md:-mt-24 lg:mt-14" : "md:items-center"
       } `}
     >
       <div
-        className={`flex justify-center pt-10 md:h-screen  ${
-          !itemsFav.length ? "md:items-center" : "md:items-start"
+        className={`flex justify-center pt-10  ${
+          !itemsFav.length ? "items-start md:items-center md:-mt-30 lg:items-start lg:mt-32" : "md:items-center"
         }`}
       >
-        <h2 className="text-3xl md:text-[40px] pl-2 my-2 border-l-4  font-sans font-bold border-blue-700  text-slate-950 sticky top-[40%]">
-          My Favorites
-        </h2>
+        <Title title={"my favorites"} />
       </div>
-      <hr className="w-[70%] md:w-[15%] my-2 md:hidden " />
 
       {/* Favorites List */}
       {itemsFav.length ? (
@@ -81,7 +79,7 @@ export const Favorites = () => {
                 <img
                   className="w-36 h-30 object-cover"
                   src={item.urlImage}
-                  alt={`Imgage of ${item.name}`}
+                  alt={`Image of ${item.name}`}
                 />
                 <div className="text-center flex flex-col -mt-3 w-full ">
                   {/* About product */}
@@ -114,9 +112,9 @@ export const Favorites = () => {
         </div>
       ) : (
         // No favs products
-        <div className="flex flex-col items-center gap-8 cursor-pointer group">
+        <div className="flex flex-col items-center gap-8 group">
           <img
-            className="w-52 pt-10 invert-0 animate-beat"
+            className="w-48 pt-10 animate-beat"
             src={NotFavs}
             alt="There aren't any product"
           />
