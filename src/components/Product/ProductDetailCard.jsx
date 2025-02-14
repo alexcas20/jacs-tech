@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../../features/cartSlice";
-import { QuantitySelector } from "../QuantitySelector";
+import { QuantitySelector } from "../shared/QuantitySelector";
 import { ProductsCarrousel } from "./ProductsCarrousel";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { addFav } from "../../features/favSlice";
-import { ReviewsProduct } from "../Reviews/ReviewsProduct";
-import { Rate } from "../Rate/Rate";
+import { ReviewsProduct } from "../reviews/ReviewsProduct";
+import { Rate } from "../shared/Rate";
+import { ScrollRevealEffect } from "../layout/ScrollRevealEffect";
 
 export const ProductDetailCard = ({ product }) => {
   // for while, get itemsFav to know which products are favorites
@@ -51,7 +52,7 @@ export const ProductDetailCard = ({ product }) => {
         </div>
 
         {/* product info */}
-        <div className="px-1 py-6 rounded-md relative">
+        <div className="px-1 py-6 rounded-md relative lg:w-[45%]">
           <h5 className="uppercase text-xl text-slate-500">
             {product.category}
           </h5>
@@ -129,10 +130,14 @@ export const ProductDetailCard = ({ product }) => {
       </article>
 
       {/*  Reviews */}
-      <ReviewsProduct id={product.id} />
+      <ScrollRevealEffect>
+        <ReviewsProduct id={product.id} />
+      </ScrollRevealEffect>
 
       {/* Relationaded products */}
-      <ProductsCarrousel category={product.category} id={product.id} />
+      <ScrollRevealEffect>
+        <ProductsCarrousel category={product.category} id={product.id} />
+      </ScrollRevealEffect>
     </>
   );
 };

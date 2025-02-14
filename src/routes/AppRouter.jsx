@@ -1,15 +1,29 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { Cart } from "../pages/Cart/Cart";
 import { Products } from "../pages/Products/Products";
-import { ResponsiveAppBar } from "../components/ResponsiveAppBar";
+import { ResponsiveAppBar } from "../components/layout/ResponsiveAppBar";
 import { ProductDetail } from "../pages/ProductDetail/ProductDetail";
-import { Footer } from "../components/Footer/Footer";
+import { Footer } from "../components/layout/Footer";
 import { Favorites } from "../pages/Favs/Favorites";
 import { ScrollToPage } from "../components/shared/ScrollToPage";
-import { AnimatedPage } from "../components/shared/AnimatedPage";
 import { Toaster } from "react-hot-toast";
-import { ScrollToTop } from "../components/ScrollToTop/ScrollToTop";
+import { ScrollToTop } from "../components/layout/ScrollToTop";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <Routes location={location} key={location.pathname}>
+      <Route path="/" element={<Home />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/favs" element={<Favorites />} />
+      <Route path="*" element={<Home />} />
+    </Routes>
+  );
+};
 
 export const AppRouter = () => {
   return (
@@ -17,68 +31,17 @@ export const AppRouter = () => {
       <BrowserRouter>
         <ResponsiveAppBar />
         <Toaster
-        position="bottom-center"
-        toastOptions={{
-          style: {
-            background: '#1e293b',
-            color: '#fff',
-          },
-        }}
-      />
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "#1e293b",
+              color: "#fff",
+            },
+          }}
+        />
         <ScrollToPage />
-        <ScrollToTop/>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <AnimatedPage>
-                <Home />
-              </AnimatedPage>
-            }
-          />
-          <Route
-            path="/products"
-            element={
-              <AnimatedPage>
-                <Products />
-              </AnimatedPage>
-            }
-          />
-          <Route
-            path="/product/:id"
-            element={
-              <AnimatedPage>
-                <ProductDetail />
-              </AnimatedPage>
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <AnimatedPage>
-                {" "}
-                <Cart />
-              </AnimatedPage>
-            }
-          />
-          <Route
-            path="/favs"
-            element={
-              <AnimatedPage>
-                {" "}
-                <Favorites />
-              </AnimatedPage>
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <AnimatedPage>
-                <Home />
-              </AnimatedPage>
-            }
-          />
-        </Routes>
+        <ScrollToTop />
+        <AnimatedRoutes />
         <Footer />
       </BrowserRouter>
     </>

@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItem } from "../../features/cartSlice";
-import { CartEmpty } from "../../components/CartEmpty";
+import { CartEmpty } from "../../components/cart/CartEmpty";
 
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import { QuantitySelector } from "../../components/QuantitySelector";
+import { QuantitySelector } from "../../components/shared/QuantitySelector";
 import toast from "react-hot-toast";
-import { Title } from "../../components/shared/Title";
+import { Title } from "../../components/common/Title";
+import { AnimateWraper } from "../../components/layout/AnimateWraper";
 
 export const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -47,7 +48,8 @@ export const Cart = () => {
   };
 
   return (
-    <article className="pb-12 md:pb-32 lg:pb-0">
+    <AnimateWraper>
+<div className="pb-12 md:pb-32 lg:pb-0">
       {items.length > 0 ? (
         <>
           {/* Title page */}
@@ -121,6 +123,8 @@ export const Cart = () => {
       ) : (
         <CartEmpty />
       )}
-    </article>
+    </div>
+    </AnimateWraper>
+    
   );
 };

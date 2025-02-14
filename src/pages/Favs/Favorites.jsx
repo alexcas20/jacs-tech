@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import NotFavs from "../../assets/icons/sad_favs.svg";
 import toast from "react-hot-toast";
-import { Title } from "../../components/shared/Title";
+import { Title } from "../../components/common/Title";
+import { AnimateWraper } from "../../components/layout/AnimateWraper";
 
 export const Favorites = () => {
   // get data from reducer
@@ -51,7 +52,9 @@ export const Favorites = () => {
   const navigate = useNavigate();
 
   return (
-    <article
+
+    <AnimateWraper>
+<div
       className={`min-h-screen pb-10 md:pb-0 flex flex-col md:flex-row md:items-start md:px-8 md:justify-evenly ${
         !itemsFav.length ? "md:items-center lg:items-start md:-mt-24 lg:mt-14" : "md:items-center"
       } `}
@@ -130,6 +133,8 @@ export const Favorites = () => {
           </button>
         </div>
       )}
-    </article>
+    </div>
+    </AnimateWraper>
+    
   );
 };

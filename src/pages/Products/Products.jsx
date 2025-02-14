@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { ProductsCard } from "../../components/Product/ProductsCard";
-import { Filter } from "../../components/Filter/Filter";
+import { ProductsCard } from "../../components/product/ProductsCard";
+import { Filter } from "../../components/shared/Filter";
 import { useFetch } from "../../hooks/useFetch";
+import { AnimateWraper } from "../../components/layout/AnimateWraper";
+import { ScrollRevealEffect } from "../../components/layout/ScrollRevealEffect";
 
 export const Products = () => {
   //Request products
@@ -77,20 +79,26 @@ export const Products = () => {
   };
 
   return (
-    <article className="flex flex-col md:flex-row mt-8 md:gap-1 md:justify-around min-h-screen ">
-      {/*   Filters */}
-      <Filter
-        category={category}
-        onChangeCategory={onChangeCategory}
-        categorySelected={categorySelected}
-        actionSelected={actionSelected}
-        handleSort={handleSort}
-      />
-      <div className="grid grid-cols-1 place-items-center place-content-center w-full mb-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:w-[80%] lg:w-[70%]">
-        {products.map((product) => (
-          <ProductsCard key={product.id} product={product} />
-        ))}
+    <AnimateWraper>
+      <div className="flex flex-col md:flex-row mt-8 md:gap-1 md:justify-around min-h-screen ">
+        {/*   Filters */}
+        <Filter
+          category={category}
+          onChangeCategory={onChangeCategory}
+          categorySelected={categorySelected}
+          actionSelected={actionSelected}
+          handleSort={handleSort}
+        />
+       
+        <div className="grid grid-cols-1 place-items-center place-content-center w-full mb-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:w-[80%] lg:w-[70%]">
+          {products.map((product) => (
+             <ScrollRevealEffect key={product.id}>
+          <ProductsCard  product={product} />
+             </ScrollRevealEffect>
+            
+          ))}
+        </div>
       </div>
-    </article>
+    </AnimateWraper>
   );
 };

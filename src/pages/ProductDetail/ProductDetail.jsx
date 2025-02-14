@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ProductDetailCard } from "../../components/Product/ProductDetailCard";
+import { ProductDetailCard } from "../../components/product/ProductDetailCard";
+import { AnimateWraper } from "../../components/layout/AnimateWraper";
 
 export const ProductDetail = () => {
   // get item by id
@@ -22,8 +23,10 @@ export const ProductDetail = () => {
   }, [id]);
 
   return (
-    <article className="container mx-auto px-10">
-      <ProductDetailCard product={product} />
-    </article>
+    <AnimateWraper>
+      <article className="container mx-auto px-10">
+        <ProductDetailCard product={product} />
+      </article>
+    </AnimateWraper>
   );
 };
