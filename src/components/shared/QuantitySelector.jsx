@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addCant, restCant } from "../features/cartSlice";
+import { addCant, restCant } from "../../features/cartSlice";
 import { useState } from "react";
 import { PlusIcon, MinusIcon } from "@heroicons/react/24/solid";
 

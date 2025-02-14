@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import cartEmpty from "../assets/icons/cart-empty.svg";
+import cartEmpty from "../../assets/icons/cart-empty.svg";
 
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 

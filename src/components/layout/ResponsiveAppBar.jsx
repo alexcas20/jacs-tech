@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
-import logo from "../assets/logo/logo-jacs.png";
+import logo from "../../assets/logo/logo-jacs.png";
 
 export const ResponsiveAppBar = () => {
   // navigate to cart

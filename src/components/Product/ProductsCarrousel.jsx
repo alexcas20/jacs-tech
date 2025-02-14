@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { Title } from "../shared/Title";
+import { Title } from "../common/Title";
 import { useFetch } from "../../hooks/useFetch";
 
 // Is Mobile
