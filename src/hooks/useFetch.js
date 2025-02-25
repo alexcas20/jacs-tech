@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = ({ route }) => {
-  const URL = "http://localhost:8080/api/v1";
+  const URL = "http://localhost:8080/api/v1/public";
 
   const [dataR, setDataR] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,5 +33,5 @@ export const useFetch = ({ route }) => {
     getData();
   }, [route]);
 
-  return { dataR, loading, error };
+  return { dataR, loading, error, getData };
 };
