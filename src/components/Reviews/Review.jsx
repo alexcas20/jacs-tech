@@ -1,78 +1,69 @@
 import { useEffect, useState } from "react";
 
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import { Title } from "../shared/Title";
+import { Title } from "../common/Title";
+import { useFetch } from "../../hooks/useFetch";
 
 export const Review = () => {
-  const testimonials = [
-    {
-      name: "Alice",
-      review: "Great service! Highly recommend.",
-      image: "https://placehold.co/200", // Reemplaza con una URL real
-    },
-    {
-      name: "Bob",
-      review: "Amazing experience, will come back again!",
-      image: "https://placehold.co/200", // Reemplaza con una URL real
-    },
-    {
-      name: "Charlie",
-      review: "Customer support was fantastic.",
-      image: "https://placehold.co/200", // Reemplaza con una URL real
-    },
-    {
-      name: "Diana",
-      review: "Super easy to use and very helpful!",
-      image: "https://placehold.co/200", // Reemplaza con una URL real
-    },
-  ];
+  // dataR / reviews
+  const [reviews, setReviews] = useState([]);
+  const { dataR } = useFetch({ route: "reviews" });
 
-  const [position, setPosition] = useState(0);
-  console.log(testimonials.length);
+  // Position Review
+  const [position, setPosition] = useState(3);
 
-  const onNextReview = () => {
-    if (position < testimonials.length - 1) {
-      setPosition((prev) => prev + 1);
-    } else setPosition(0);
+  const ShowMoreReviews = () => {
+    if (position < dataR.length) {
+      setPosition(dataR.length);
+    } else setPosition(3);
   };
 
   useEffect(() => {
+    setReviews(dataR);
+    console.log(reviews);
     console.log("pos value", position);
-  }, [position]);
+  }, [position, dataR]);
+
+ 
 
   return (
-    <article className="flex flex-col items-center py-1">
+    <article>
       <Title title="Our Reviews" />
 
-      {/* Card */}
-      <div className="w-[350px] md:w-[700px] ">
-        <div className="bg-slate-100 p-4 flex flex-col items-center gap-8 rounded-lg h-[450px] shadow-xl  ">
-          <div>
-            <img
-              src={testimonials[position].image}
-              alt={`Photo of ${testimonials[position].name}`}
-              className="rounded-full object-cover border-blue-950 border-2"
-            />
-          </div>
+      {/*  Container */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center  mt-24 px-20 gap-8 ">
+        {reviews?.slice(0, position).map((review) => (
+          <div
+            key={review.id}
+            className="bg-slate-100 border border-slate-300 rounded-md p-14 flex flex-col items-center justify-between relative mb-12"
+          >
+            <div className="">
+              <img
+                src={review.userImage}
+                alt={`Image of ${review.userName}`}
+                className="absolute bottom-[75%] left-8 rounded-full"
+              />
+            </div>
 
-          <div className="text-center py-4 w-64 h-40 ">
-            <h4 className="tracking-wider text-2xl text-slate-950 ">
-              {testimonials[position].name}
-            </h4>
-            <p className="text-lg text-slate-600 break-words">
-              {testimonials[position].review}
-            </p>
-          </div>
+            <div className="pt-10 my-4">
+              <h3 className="font-bold">{review.userName}</h3>
+              <span className="text-slate-500">{review.reviewDate}</span>
+            </div>
 
-          <div className="w-full text-end">
-            <button
-              onClick={onNextReview}
-              className="border-black border px-6 py-1 text-slate-900 rounded-md transition-all hover:scale-105 hover:bg-black hover:text-slate-50 "
-            >
-              <ArrowRightIcon className="h-6" />
-            </button>
+            <div className="w-[250px]">
+              <p className="text-sm">{review.review}</p>
+            </div>
           </div>
-        </div>
+        ))}
+      </div>
+
+      <div className="flex justify-center ">
+        <button
+          className="border border-slate-950 rounded-md px-3 py-4 w-[310px]"
+          onClick={ShowMoreReviews}
+        >
+          {" "}
+          {position === reviews?.length ? "Undo reviews" : "Show more Reviews"}
+        </button>
       </div>
     </article>
   );
