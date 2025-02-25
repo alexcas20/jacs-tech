@@ -9,6 +9,7 @@ import { Favorites } from "../pages/Favs/Favorites";
 import { ScrollToPage } from "../components/shared/ScrollToPage";
 import { Toaster } from "react-hot-toast";
 import { ScrollToTop } from "../components/layout/ScrollToTop";
+import { Login } from "../pages/Login/Login";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,6 +21,8 @@ const AnimatedRoutes = () => {
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/favs" element={<Favorites />} />
+      <Route path="/login" element={<Login />} />
+
       <Route path="*" element={<Home />} />
     </Routes>
   );

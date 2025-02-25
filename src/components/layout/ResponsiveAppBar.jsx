@@ -102,7 +102,9 @@ export const ResponsiveAppBar = () => {
               : "hidden md:flex md:gap-4 md:justify-center md:items-center"
           }`}
         >
-          <button className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex gap-2 items-center">
+          <button className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex gap-2 items-center"
+          
+          onClick={() => navigate("/login")}>
             <UserIcon className="w-4" />
             Login
           </button>
