@@ -19,9 +19,9 @@ export const ResponsiveAppBar = () => {
   // mobile appbar
   const [isOpen, setIsOpen] = useState(false);
 
-  // navigate to cart mobile nav
-  const handleNavigate = () => {
-    navigate("/cart");
+  // navigate icons mobile nav
+  const handleNavigate = (route) => {
+    navigate(route);
     setIsOpen(!isOpen);
   };
 
@@ -104,13 +104,13 @@ export const ResponsiveAppBar = () => {
         >
           <button className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex gap-2 items-center"
           
-          onClick={() => navigate("/login")}>
+          onClick={() => handleNavigate("/login")}>
             <UserIcon className="w-4" />
             Login
           </button>
           <button
             className="border border-slate-100 py-2 px-4 rounded-md text-slate-50 transition-colors hover:bg-slate-600 flex items-center gap-2"
-            onClick={handleNavigate}
+            onClick={() => handleNavigate("/cart")}
           >
             <ShoppingCartIcon className="w-4" />
             Cart ({items.length})

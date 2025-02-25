@@ -9,7 +9,7 @@ import { Favorites } from "../pages/Favs/Favorites";
 import { ScrollToPage } from "../components/shared/ScrollToPage";
 import { Toaster } from "react-hot-toast";
 import { ScrollToTop } from "../components/layout/ScrollToTop";
-import { Login } from "../pages/Login/Login";
+import { Login } from "../pages/Auth/Login/Login"
 
 const AnimatedRoutes = () => {
   const location = useLocation();
